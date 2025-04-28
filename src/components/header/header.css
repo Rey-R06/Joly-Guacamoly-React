@@ -1,0 +1,113 @@
+
+header{
+  width: 100%;
+  height: fit-content;
+  background: #568b11;
+  border-bottom: #000000 solid 2px;
+}
+
+header .contenedor-logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contenedor-logo img{
+  margin: 20px;
+  width: 200px;
+}
+
+header ul{
+  height: 100%;
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 10%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+header button{
+  width: 100px;
+  height: 25px;
+  transition: 0.8s;
+  cursor: pointer;
+  font-family: none;
+  font-size: 1.3rem;
+  color: #ffffff;
+  background: none;
+  border: none;
+}
+
+
+header button:hover{
+  background: #0000002d;
+  border-radius: 10px;
+}
+
+/* Oculta el menú en pantallas pequeñas por defecto */
+/* Estilos para el botón hamburguesa */
+.menu-hamburguesa {
+  display: none; /* Oculto por defecto */
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+/* responsive.css */
+
+/* Para tablets */
+@media (max-width: 750px) { 
+  header{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header button:hover{
+    background: transparent;
+  }
+
+  header ul{
+    display: none;
+    visibility: none;
+  }
+
+  .contenedor-logo{
+    gap: 35%;
+  }
+
+  .contenedor-logo img{
+    width: 100px;
+    margin: 20px;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .menu-hamburguesa {
+    margin: 20px 0;
+    height: 100%;
+    display: block; /* Mostrar botón hamburguesa */
+    font-size: 3.5rem;
+  }
+
+
+  .menu {
+  display: none; /* Ocultar menú */
+  flex-direction: column;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  background-color: #192f04;
+  text-align: center;
+  }
+
+}
+  
