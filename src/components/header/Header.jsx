@@ -4,26 +4,36 @@ import React from 'react'
 import "./header.css"
 
 export default function Header() {
-  const [menuAbierto, setMenuAbierto] = useState(false);
   const navegador = useNavigate();
+  const [menuAbierto, setMenuAbierto] = useState(false);
+const [animacionActiva, setAnimacionActiva] = useState(false);
 
-  function toggleMenu() {
-    setMenuAbierto(!menuAbierto);
+function toggleMenu() {
+  if (menuAbierto) {
+    // activa animación de cierre
+    setAnimacionActiva(true);
+    setTimeout(() => {
+      setMenuAbierto(false);
+      setAnimacionActiva(false);
+    }, 400); // dura 0.4s, igual que la animación
+  } else {
+    setMenuAbierto(true);
   }
+}
 
 
   return (
     <header>
-        <button class="menu-hamburguesa" onClick={toggleMenu}>
+        <button className="menu-hamburguesa" onClick={toggleMenu}>
             ☰
         </button>
-        <section class="contenedor-logo">
-          <section class="logo">
-            <img src="/img/logos/joly-logo.png" alt="" />
+        <section className="contenedor-logo">
+          <section className="logo">
+            <img onClick={() => navegador("/")} src="/img/logos/joly-logo.png" alt="" />
           </section>
         </section>
 
-      <nav class="menu">
+      <nav className={menuAbierto ? (animacionActiva ? "menu-oculto" : "menu-abierto") : "oculto"}>
           <ul>
           <li><button onClick={() => navegador("/")}>Inicio</button></li>
           <li><button onClick={() => navegador("/productos")}>Productos</button></li>

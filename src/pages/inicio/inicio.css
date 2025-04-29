@@ -1,0 +1,86 @@
+.banner{
+    display: flex;
+    justify-content: center;
+    background: #c88123;
+}
+
+.banner img{
+    width: 65%;
+}
+
+main h2{
+    text-align: center;
+    background: #77b329;
+    height: fit-content;
+    min-height: 120px;
+    border-top: #000000 2px solid;
+    color: #ffffff;
+    padding: 35px 0;
+    font-size: 4rem;
+    margin: 0;
+}
+
+.seccion-productos {
+    display: flex;
+    justify-content:space-evenly;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin: 70px 0;
+}
+
+.beneficios {
+    background: #e1ffb9;
+    padding: 60px 20px 100px;
+    text-align: center;
+}
+
+.beneficios h3 {
+    font-size: 2.2rem;
+    color: #2e7d32; 
+    margin-bottom: 40px;
+}
+
+.beneficios-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+}
+
+.beneficio {
+    background: #f1f8e9; 
+    border-radius: 12px;
+    padding: 30px 20px;
+    width: 300px;
+    border: #00ff1563 solid 3px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.beneficio:hover {
+    transform: translateY(-5px);
+}
+
+.beneficio span {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.beneficio h4 {
+    font-size: 1.5rem;
+    color: #388e3c;
+    margin-bottom: 10px;
+}
+
+.beneficio p {
+    font-size: 1.3rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+@media (max-width: 900px){
+    .banner img{
+        width: 100%;
+    }
+}

@@ -1,0 +1,49 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    border: 2px solid #c8e6c9; /* Borde verde claro */
+    border-radius: 12px;
+    width: 350px;
+    min-width: 250px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.card h3 {
+    font-size: 2rem;
+    color: #388e3c;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1.3rem;
+    color: #444;
+    line-height: 1.4;
+}
+
+.btn-joly {
+    background: #40af2ae1; 
+    color: #ffffff;
+    padding: 12px 24px;
+    margin-top: 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-joly:hover {
+    background: #388e3c; 
+    transform: scale(1.05);
+}

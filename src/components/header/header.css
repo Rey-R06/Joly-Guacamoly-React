@@ -1,4 +1,3 @@
-
 header{
   width: 100%;
   height: fit-content;
@@ -64,19 +63,11 @@ header button:hover{
   header{
     display: flex;
     justify-content: space-between;
+    height: 115px;
   }
 
   header button:hover{
     background: transparent;
-  }
-
-  header ul{
-    display: none;
-    visibility: none;
-  }
-
-  .contenedor-logo{
-    gap: 35%;
   }
 
   .contenedor-logo img{
@@ -84,30 +75,71 @@ header button:hover{
     margin: 20px;
   }
 
-  .menu ul {
+  header ul{
+    display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    margin: 0;
   }
 
   .menu-hamburguesa {
-    margin: 20px 0;
+    position: relative;
     height: 100%;
     display: block; /* Mostrar botón hamburguesa */
     font-size: 3.5rem;
+    margin: 0;
   }
 
 
-  .menu {
-  display: none; /* Ocultar menú */
-  flex-direction: column;
-  position: absolute;
-  top: 60px;
-  left: 0;
-  width: 100%;
-  background-color: #192f04;
-  text-align: center;
+  .menu-abierto{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin: 0;
+    top:115px;
+    width: 100%;
+    height: 25%;
+    background-color: #2e2f04;
+    animation: bajarMenu 0.4s ease-out forwards;
   }
 
+  .oculto{
+    display: none;
+    visibility: hidden;
+  }
+
+  .menu-oculto{
+    display: flex; 
+    flex-direction: column;
+    position: absolute;
+    top: 115px;
+    width: 100%;
+    height: 25%;
+    background-color: #2e2f04;
+    animation: subirMenu 0.4s ease-in forwards;
+  }
+
+}
+
+  
+@keyframes bajarMenu {
+  from {
+    transform: translateY(-5%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes subirMenu {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
 }
   
