@@ -1,5 +1,5 @@
 import Home from "../pages/home/Home"
-import Productos from "../pages/productos/Productos"
+import Login from "../pages/login/Login"
 import Inicio from "../pages/inicio/Inicio"
 
 export let enrutador = [
@@ -10,5 +10,9 @@ export let enrutador = [
     {
         path: '/home',
         element: <Home />
+    },
+    {
+        path: '/login',
+        element: <Login />
     }
 ]

@@ -9,7 +9,7 @@ export default function CardProductos({titulo, img, descripcion}) {
             <p>
                 {descripcion}
             </p>
-            <button className="btn-joly">Mas</button>
+            <button className="btn-joly">Ver</button>
     </article>
   )
 }

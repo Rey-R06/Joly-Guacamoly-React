@@ -32,7 +32,7 @@ function toggleMenu() {
             <img onClick={() => navegador("/")} src="/img/logos/joly-logo.png" alt="" />
           </section>
         </section>
-
+      {console.log("hola")}
       <nav className={menuAbierto ? (animacionActiva ? "menu-oculto" : "menu-abierto") : "oculto"}>
           <ul>
           <li><button onClick={() => navegador("/")}>Inicio</button></li>
