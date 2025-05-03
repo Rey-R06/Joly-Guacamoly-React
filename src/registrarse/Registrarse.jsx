@@ -1,9 +1,9 @@
 import React from "react";
-import "./login.css";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import "./registro.css";
 
-export default function Login() {
+export default function Registrarse() {
   return (
     <>
       <main className="contenedor-form">
@@ -11,9 +11,9 @@ export default function Login() {
           <FaArrowLeft className="flecha-regresar" />
         </Link>
         <form className="form">
-          <span className="title">Inicio sesión</span>
+          <span className="title">Registrarse</span>
           <label htmlFor="username" className="label">
-            Nombre
+            Username
           </label>
           <input
             type="text"
@@ -22,8 +22,18 @@ export default function Login() {
             required
             className="input"
           />
+          <label htmlFor="email" className="label">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            className="input"
+          />
           <label htmlFor="password" className="label">
-            Contraseña
+            Password
           </label>
           <input
             type="password"
@@ -33,11 +43,11 @@ export default function Login() {
             className="input"
           />
           <button type="submit" className="submit">
-            Iniciar sesion
+            Register
           </button>
           <p className="signup-link">
-            No tienes cuenta?
-            <Link to="/registrarse">Registrarse</Link>
+            Ya tienes cuenta?
+            <Link to="/login">Iniciar Sesion</Link>
           </p>
         </form>
       </main>

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import React from 'react'
 import "./header.css"
@@ -32,13 +32,12 @@ function toggleMenu() {
             <img onClick={() => navegador("/")} src="/img/logos/joly-logo.png" alt="" />
           </section>
         </section>
-      {console.log("hola")}
       <nav className={menuAbierto ? (animacionActiva ? "menu-oculto" : "menu-abierto") : "oculto"}>
           <ul>
-          <li><button onClick={() => navegador("/")}>Inicio</button></li>
-          <li><button onClick={() => navegador("/productos")}>Productos</button></li>
-          <li><button onClick={() => navegador("/clientes")}>Clientes</button></li>
-          <li><button onClick={() => navegador("/login")}>Login</button></li>
+          <li><Link to="/inicio">Inicio</Link></li>
+          <li><Link to="productos">Productos</Link></li>
+          <li><Link to="clientes">Clientes</Link></li>
+          <li><Link to="/login">Login</Link></li>
           </ul>
       </nav>
     </header>

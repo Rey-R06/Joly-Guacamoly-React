@@ -1,4 +1,4 @@
-.card {
+.card-inicio {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,26 +6,40 @@
     background: #ffffff;
     border: 2px solid #c8e6c9; /* Borde verde claro */
     border-radius: 12px;
-    width: 350px;
+    width: 400px;
+    min-width: 250px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card-productos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    border: 2px solid #c8e6c9; /* Borde verde claro */
+    border-radius: 12px;
+    width: 300px;
     min-width: 250px;
     padding: 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
-.card img {
+.card-inicio,.card-productos img {
     width: 100%;
     height: auto;
     border-radius: 8px;
     margin: 10px 0;
 }
 
-.card h3 {
+.card-inicio,.card-productos h3 {
     font-size: 2rem;
     color: #388e3c;
     margin-bottom: 10px;
 }
 
-.card p {
+.card-inicio,.card-productos p {
     font-size: 1.3rem;
     color: #444;
     line-height: 1.4;

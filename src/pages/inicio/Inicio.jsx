@@ -15,14 +15,18 @@ export default function Inicio() {
         <h2>Productos mas destacados</h2>
         <section className='seccion-productos'>
             <CardProductos 
+                clase={"card-inicio"}
                 titulo={"guacamole natural"} 
                 img={"/img/productos/producto-natural.png"} 
                 descripcion={"El tradicional, el que combina con todo, el de sabor inigualable, así es nuestro jolyguacamoly natural. Disfruta de su naturalidad y frescura🥑"}
+                mensajeButton={"Ver"}
             />
             <CardProductos 
+                clase={"card-inicio"}
                 titulo={"guacamole Picante"} 
                 img={"/img/productos/producto-picante.png"} 
                 descripcion={"El cosquilleo delicioso y sabroso en la lengua, el balance perfecto de picor para que le des un toque inigualable a tus comidas🌶"}
+                mensajeButton={"Ver"}
             />
         </section>
         
