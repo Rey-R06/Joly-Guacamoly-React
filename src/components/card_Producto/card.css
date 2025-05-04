@@ -57,6 +57,10 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
+.card-productos .btn-joly{
+    margin-top: 0;
+}
+
 .btn-joly:hover {
     background: #388e3c; 
     transform: scale(1.05);
