@@ -5,13 +5,13 @@ header{
   border-bottom: #000000 solid 2px;
 }
 
-header .contenedor-logo{
+header .contenedor-logo-header{
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.contenedor-logo img{
+.contenedor-logo-header img{
   margin: 20px;
   width: 200px;
 }
@@ -71,8 +71,8 @@ header a:hover{
     background: transparent;
   }
 
-  .contenedor-logo img{
-    width: 100px;
+  .contenedor-logo-header img{
+    width: 120px;
     margin: 20px;
   }
 
@@ -84,6 +84,7 @@ header a:hover{
 
   .menu-hamburguesa {
     position: relative;
+    left: 20px;
     height: 100%;
     display: block; /* Mostrar botón hamburguesa */
     font-size: 3.5rem;
@@ -91,7 +92,7 @@ header a:hover{
   }
 
 
-  .menu-abierto{
+  .menu-abierto-header{
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -103,12 +104,12 @@ header a:hover{
     animation: bajarMenu 0.4s ease-out forwards;
   }
 
-  .oculto{
+  .oculto-header{
     display: none;
     visibility: hidden;
   }
 
-  .menu-oculto{
+  .menu-oculto-header{
     display: flex; 
     flex-direction: column;
     position: absolute;

@@ -27,15 +27,15 @@ function toggleMenu() {
         <button className="menu-hamburguesa" onClick={toggleMenu}>
             ☰
         </button>
-        <section className="contenedor-logo">
+        <section className="contenedor-logo-header">
           <section className="logo">
             <img onClick={() => navegador("/")} src="/img/logos/joly-logo.png" alt="" />
           </section>
         </section>
-      <nav className={menuAbierto ? (animacionActiva ? "menu-oculto" : "menu-abierto") : "oculto"}>
+      <nav className={menuAbierto ? (animacionActiva ? "menu-oculto-header" : "menu-abierto-header") : "oculto-header"}>
           <ul>
-          <li><Link to="/inicio">Inicio</Link></li>
-          <li><Link to="productos">Productos</Link></li>
+          <li><Link to="/">Inicio</Link></li>
+          <li><Link to="/productos">Productos</Link></li>
           <li><Link to="clientes">Clientes</Link></li>
           <li><Link to="/login">Login</Link></li>
           </ul>

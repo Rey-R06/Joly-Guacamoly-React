@@ -3,6 +3,23 @@
     display: flex;
 }
 
+.contenedor-logo-productos img{
+    width: 200px;
+    margin: 40px 40px 0;
+}
+
+.menu-hamburguesa-producto {
+    position: absolute;
+    right: 30px;
+    top: 5px;
+    display: none; /* Oculto por defecto */
+    color: #568b11;
+    border: none;
+    background: none;
+    font-size: 4rem;
+    cursor: pointer;
+  }
+
 .contenedor-left{
     display: flex;
     flex-direction: column;
@@ -11,8 +28,9 @@
     position: sticky;
     top: 0;
     margin: 100px 0  0 20px;
-    padding: 2rem;
+    padding: 1rem;
     width: 300px;
+    min-width: 250px;
     height: 100vh;
 }
 
@@ -21,8 +39,8 @@
     visibility: hidden;
 }
 
-.contenedor-logo img{ 
-    margin: 40px 40px;
+.contenedor-logo-productos img{ 
+    margin: 40px 40px 0 40px;
 }
 
 .categorias{
@@ -85,9 +103,10 @@ ul .categoria-seleccionada{
     background: transparent;
     border: none;
     color: #388e3c;
-    font-size: 2rem;
+    font-size: 3rem;
     text-align: left;
-    margin: 0 50px;
+    padding: 50px 0 0 5%;
+    margin: 0;
 }
 
 .productos{
@@ -99,3 +118,123 @@ ul .categoria-seleccionada{
     margin: 0 0 50px 0;
     padding: 10px;
 }
+
+@media (max-width: 700px){
+.contenedor-left{
+    display: none;
+    visibility: hidden;
+}
+
+.menu-hamburguesa-producto {
+    display: block;
+    top: 30px;
+    z-index: 9;
+}
+
+.menu-hamburguesa-producto-desplegado {
+    color: #ecff45;
+}
+
+.contenedor-logo-productos img {
+    width: 150px;
+    margin: 30px 0 0 20px;
+}
+
+.contenedor-contenido{
+    justify-content: center;
+}
+
+.contenedor-productos{
+    margin: 120px 0;
+}
+
+
+.categorias-desplegable{
+    width: 100%;
+}
+
+.categorias-desplegable ul{
+    width: 100%;
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    border-bottom: #000000 4px solid;
+    gap: 10px;
+}
+
+.categorias-desplegable a{
+    text-decoration: none;
+    color: #ecff45;
+    font-size: 1.5rem;
+}
+
+.seleccionar-carrito{
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.seleccionar-carrito .icono-carrito{
+    size: 40;
+}
+
+.categorias-desplegable button{
+    position: relative;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    border: none;
+    color: #ecff45;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+
+.menu-abierto{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    background: #568b11;
+    height: fit-content;
+    animation: bajarMenu 0.4s ease-out forwards;
+  }
+
+.menu-oculto{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    background: #568b11;
+    height: fit-content;
+    animation: subirMenu 0.4s ease-in forwards;
+  }
+    
+}
+
+@media (max-width: 440px){
+    .contenedor-productos{
+        width: 100%;
+    }
+}
+
+  
+@keyframes bajarMenu {
+    from {
+      transform: translateY(-5%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes subirMenu {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-20%);
+      opacity: 0;
+    }
+  }

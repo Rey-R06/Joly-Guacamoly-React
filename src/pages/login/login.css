@@ -1,23 +1,10 @@
-.flecha-regresar{
-  position: absolute;
-  left: 20px;
-  top: 50px;
-  font-size: 1.5rem;
-  color: white;
-  width: 50px;
-  height: 50px;
-  padding: 10px;
-  border: #7af03546 5px solid;
-  border-radius: 50%;
-}
-
 .contenedor-form{
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #FFD700;
+  background: #ecff45;
 }
 
 .form {
