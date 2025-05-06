@@ -12,7 +12,7 @@ export default function Inicio() {
         <section className="banner">
           <img src="/img/banner/jolim2.jpeg" alt="" />
         </section>
-        <h2>Productos mas destacados</h2>
+        <h2 className="titulo-inicio">Productos mas destacados</h2>
         <section className="seccion-productos">
           <article className="card-inicio">
             <h3>guacamole natural</h3>
@@ -29,11 +29,11 @@ export default function Inicio() {
 
           <article className="card-inicio">
             <h3>guacamole natural</h3>
-            <img src="/img/productos/producto-natural.png" alt="" />
+            <img src="/img/productos/producto-picante.png" alt="" />
             <p>
-              El tradicional, el que combina con todo, el de sabor inigualable,
-              así es nuestro jolyguacamoly natural. Disfruta de su naturalidad y
-              frescura🥑
+              El cosquilleo delicioso y sabroso en la lengua, el balance
+              perfecto de picor para que le des un toque inigualable a tus
+              comidas🌶
             </p>
             <Link to="/productos">
               <button className="btn-joly">Ver</button>
