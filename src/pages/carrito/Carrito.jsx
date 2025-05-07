@@ -43,7 +43,7 @@ export default function Carrito() {
         <div className="lista-productos-carrito">
           {/* Ejemplo de producto en el carrito */}
           <div className="producto-carrito">
-            <img src="/public/img/productos/producto-natural.png" alt="Guacamole" />
+            <img src="/img/productos/producto-natural.png" alt="Guacamole" />
             <div className="info-producto">
               <h3>Guacamole Clásico</h3>
               <p>Precio: $15.000</p>
