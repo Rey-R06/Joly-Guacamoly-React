@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaFacebook, FaWhatsapp, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
-import './Footer.css';
+import './footer.css';
 
 function Footer() {
   const companyInfo = {
