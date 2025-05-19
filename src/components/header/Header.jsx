@@ -1,6 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import React from 'react'
 import "./header.css"
 
 export default function Header() {
@@ -20,26 +19,25 @@ function toggleMenu() {
     setMenuAbierto(true);
   }
 }
-
-
   return (
     <header>
-        <button className="menu-hamburguesa" onClick={toggleMenu}>
-            ☰
-        </button>
-        <section className="contenedor-logo-header">
-          <section className="logo">
-            <img onClick={() => navegador("/")} src="/img/logos/joly-logo.png" alt="" />
-          </section>
+        <section className='logo-nav'>
+            <button className="menu-hamburguesa" onClick={toggleMenu}>
+                ☰
+            </button>
+            <Link className='logo' to="/"><img src="/img/logos/Logo_JolyDips.png" alt=""/></Link>
+            <nav className={menuAbierto ? (animacionActiva ? "menu-oculto" : "menu-abierto") : "oculto"}>
+            <ul >
+                <Link to="/"><li>Inicio</li></Link>
+                <Link to="/productos"><li>Productos</li></Link>
+                <Link to="/clientes"><li>Clientes</li></Link>
+            </ul>
+            </nav>
         </section>
-      <nav className={menuAbierto ? (animacionActiva ? "menu-oculto-header" : "menu-abierto-header") : "oculto-header"}>
-          <ul>
-          <li><Link to="/">Inicio</Link></li>
-          <li><Link to="/productos">Productos</Link></li>
-          <li><Link to="clientes">Clientes</Link></li>
-          <li><Link to="/login">Login</Link></li>
-          </ul>
-      </nav>
+        <section className='botones-login'>
+            <Link to="/login" className='boton-registrarse'><p>login</p></Link>
+            <Link to="/registrarse" className='boton-sesion'><p>Sing up</p></Link>
+        </section>
     </header>
   )
 }

@@ -1,6 +1,7 @@
-import React from "react";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
+import Carrusel from "../../components/carrusel/Carrusel";
+import Galeria from "./Galeria";
 import { Link } from "react-router-dom";
 import "./inicio.css";
 
@@ -9,37 +10,50 @@ export default function Inicio() {
     <>
       <Header />
       <main>
-        <section className="banner">
-          <img src="/img/banner/jolim2.jpeg" alt="" />
-        </section>
-        <h2 className="titulo-inicio">Productos mas destacados</h2>
-        <section className="seccion-productos">
-          <article className="card-inicio">
-            <h3>guacamole natural</h3>
-            <img src="/img/productos/producto-natural.png" alt="" />
-            <p>
-              El tradicional, el que combina con todo, el de sabor inigualable,
-              así es nuestro jolyguacamoly natural. Disfruta de su naturalidad y
-              frescura🥑
-            </p>
-            <Link to="/productos">
-              <button className="btn-joly">Ver</button>
-            </Link>
-          </article>
+        <Carrusel />
 
-          <article className="card-inicio">
-            <h3>guacamole natural</h3>
-            <img src="/img/productos/producto-picante.png" alt="" />
-            <p>
-              El cosquilleo delicioso y sabroso en la lengua, el balance
-              perfecto de picor para que le des un toque inigualable a tus
-              comidas🌶
-            </p>
-            <Link to="/productos">
-              <button className="btn-joly">Ver</button>
-            </Link>
-          </article>
+        <section className="sobre-nosotros-moderno">
+          <div className="contenedor-izquierdo">
+            <div className="tarjeta-texto">
+              <h2 className="titulo-destacado">
+                <span className="texto-aguacate">Joly</span>Dips
+              </h2>
+              <p className="subtitulo-minimalista">
+                GUACAMOLE ARTESANAL MEDELLINENSE
+              </p>
+
+              <div className="linea-aguacate"></div>
+
+              <p className="descripcion-elegante">
+                Desde el corazón de El Poblado, Medellín, elaboramos dips de
+                aguacate 100% naturales, sin conservantes ni aditivos. Cada
+                fruto es seleccionado a mano para garantizar auténtico sabor
+                campesino.
+              </p>
+
+              <Link to="/sobre-nosotros" className="boton-minimalista">
+                <span className="icono-aguacate">🥑</span>
+                <span>Conócenos</span>
+                <span className="flecha">→</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="contenedor-derecho">
+            <div className="marco-imagen">
+              <img
+                src="/Fundadores.jpg"
+                alt="Equipo JolyDips en Medellín"
+                className="imagen-fundadores"
+              />
+              <div className="sello-calidad">
+                <span>100% Natural</span>
+              </div>
+            </div>
+          </div>
         </section>
+        
+        <Galeria />
 
         <section className="beneficios">
           <h3>¿Por qué elegir JolyGuacamoly?</h3>

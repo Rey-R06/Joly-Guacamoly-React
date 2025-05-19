@@ -1,0 +1,144 @@
+/* Estilos base */
+.galeria-joly {
+  padding: 5rem 2rem;
+  background-color: #f9f9f7;
+  font-family: 'Helvetica Neue', sans-serif;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Encabezado */
+.encabezado-joly {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+}
+
+.encabezado-joly h2 {
+  font-size: 2.8rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.destacado-joly {
+  color: #8b9f4e;
+}
+
+.subtitulo-joly {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+.separador-joly {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #6b8e23, #a8c64e);
+  margin: 0 auto;
+}
+
+/* Grid Masonry controlado */
+.masonry-joly {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 2fr));
+  grid-auto-rows: 200px;
+  grid-gap: 20px;
+}
+
+.item-joly {
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: all 0.4s ease;
+}
+
+/* Control de altura máxima para evitar items demasiado largos */
+.item-joly:nth-child(5n+1) {
+  grid-row: span 1;
+}
+
+.item-joly:nth-child(5n+2) {
+  grid-row: span 1;
+}
+
+.item-joly:nth-child(5n+3) {
+  grid-row: span 1;
+}
+
+/* Overlay con efecto hover original */
+.overlay-joly {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;/*tambien se le puede quitar*/
+  background: rgba(139, 159, 78, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: all 0.4s ease;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.item-joly:hover .overlay-joly {
+  bottom: 0;
+}
+
+.overlay-joly h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  opacity: 0;
+}
+
+.item-joly:hover .overlay-joly h3 {
+  transform: translateY(0);
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .masonry-joly {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .galeria-joly {
+    padding: 3rem 1rem;
+  }
+  
+  .encabezado-joly h2 {
+    font-size: 2.2rem;
+  }
+  
+  .masonry-joly {
+    grid-auto-rows: 180px;
+    grid-gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .masonry-joly {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 220px;
+  }
+  
+  .encabezado-joly h2 {
+    font-size: 2rem;
+  }
+  
+  .subtitulo-joly {
+    font-size: 1rem;
+  }
+}

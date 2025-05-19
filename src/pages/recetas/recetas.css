@@ -1,0 +1,101 @@
+/* Estructura principal */
+.recetas-joly {
+  padding: 6rem 10%;
+  background: linear-gradient(to bottom, #ffffff, #f9f9f7);
+}
+
+.recetas-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.recetas-header h2 {
+  font-size: 2.8rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.marca-joly {
+  color: #8b9f4e;
+}
+
+.subtitulo-recetas {
+  color: #7f8c8d;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+}
+
+.separador-aguacate {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #6b8e23, #a8c64e);
+  margin: 0 auto;
+}
+
+/* Grid de recetas */
+.grid-recetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2.5rem;
+  margin: 3rem auto;
+}
+
+/* Cards */
+.card-receta {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-receta:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.card-receta.destacada {
+  border: 2px solid #8b9f4e;
+}
+
+/* Imagen */
+.imagen-receta {
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.badge-tiempo {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.badge-destacada {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #8b9f4e;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Cuerpo de la receta */
+.cuerpo-receta {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}

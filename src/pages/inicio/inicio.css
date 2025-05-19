@@ -1,16 +1,150 @@
-.banner{
-    display: flex;
-    justify-content: center;
-    background: #fff7a5;
+@import '../../style/colores.module.css';
+/* Contenedor principal con fondo SVG */
+/* Estilo minimalista-moderno */
+.sobre-nosotros-moderno {
+  display: flex;
+  min-height: 50vh;
+  background: url("/img/banner/fondo.svg");
 }
 
-.banner img{
-    width: 65%;
+.contenedor-izquierdo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 10%;
+  background: linear-gradient(to right, rgba(181, 187, 24, 0.534) 70%, transparent);
 }
+
+.contenedor-derecho {
+  flex: 1;
+  position: relative;
+}
+
+.tarjeta-texto {
+  max-width: 500px;
+}
+
+.titulo-destacado {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.texto-aguacate {
+  font-weight: 700;
+  color: #8b9f4e;
+}
+
+.subtitulo-minimalista {
+  font-size: 0.9rem;
+  color: var(--cafe-color);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.linea-aguacate {
+  width: 60px;
+  height: 3px;
+  background: var(--cafe-color);
+  margin: 1rem 0 2rem;
+}
+
+.descripcion-elegante {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+/* Botón minimalista */
+.boton-minimalista {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 25px;
+  background: var(--cafe-color);
+  color: #8b9f4e;
+  border: 1px solid #d1d9c6;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.boton-minimalista:hover {
+  background: #f5f7ee;
+  border-color: #8b9f4e;
+  transform: translateX(5px);
+}
+
+.icono-aguacate {
+  font-size: 1.2rem;
+}
+
+.flecha {
+  transition: transform 0.3s ease;
+}
+
+
+/* Estilo para la imagen */
+.marco-imagen {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 80%;
+  height: 70%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 20px 20px 0 var(--cafe-color);
+}
+
+.imagen-fundadores {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.sello-calidad {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #8b9f4e;
+  color: white;
+  padding: 8px 15px;
+  font-size: 0.8rem;
+  border-radius: 20px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .sobre-nosotros-moderno {
+    flex-direction: column;
+  }
+  
+  .contenedor-izquierdo {
+    padding: 5rem 5% 3rem;
+    background: white;
+  }
+  
+  .marco-imagen {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    transform: none;
+    margin-top: 2rem;
+    box-shadow: 0 10px 0 #e8ecdb;
+  }
+}
+
+
 
 .titulo-inicio{
     text-align: center;
-    background: #77b329;
+    background: var(--verde-color);
     height: fit-content;
     min-height: 120px;
     border-top: #000000 2px solid;
@@ -127,10 +261,4 @@
     font-size: 1.3rem;
     color: #555;
     line-height: 1.5;
-}
-
-@media (max-width: 900px){
-    .banner img{
-        width: 100%;
-    }
 }

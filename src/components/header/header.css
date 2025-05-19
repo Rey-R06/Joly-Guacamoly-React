@@ -1,127 +1,215 @@
+@import '../../style/colores.module.css';
+
 header{
-  width: 100%;
-  height: fit-content;
-  background: #568b11;
-  border-bottom: #000000 solid 2px;
-}
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 135px;
+    background: var(--verde-color);
+    border-bottom: var(--cafe-color) solid 2px;
+    font-family: none;
+    font-size: 1.5rem;
+  }
+  
 
-header .contenedor-logo-header{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contenedor-logo-header img{
-  margin: 20px;
-  width: 200px;
+header .logo{
+  margin: 30px 40px 0 ;
 }
 
 header ul{
-  height: 100%;
-  display: flex;
-  list-style: none;
-  padding: 0;
-  gap: 10%;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 16px;
+    display: flex;
+    list-style: none;
+    height: 100%;
+    gap: 15%;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 30px;
+    padding: 0;
+  }
+
+
+header .logo-nav{
+    display: flex;
 }
 
 header a{
-  width: 100px;
-  height: 25px;
-  transition: 0.8s;
-  cursor: pointer;
-  font-family: none;
-  text-decoration: none;
-  font-size: 1.3rem;
-  color: #ffffff;
-  background: none;
-  border: none;
+    transition: 0.8s;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--cafe-color);
+    font-weight: 600;
+    background: none;
+    text-decoration: none;
+  }
+
+.botones-login{
+    width: 250px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 40px 0 0;
+}
+
+.botones-login .boton-registrarse p{
+    margin: 0;
+    text-decoration: none;
+    color: var(--cafe-color);
 }
 
 
-header a:hover{
-  background: #0000002d;
-  border-radius: 10px;
+.botones-login .boton-sesion p{
+  margin: 0;
 }
 
-/* Oculta el menú en pantallas pequeñas por defecto */
-/* Estilos para el botón hamburguesa */
+.botones-login .boton-registrarse:hover{
+    color: var(--cafe-color);
+}
+
+.botones-login .boton-sesion{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cafe-color);
+    border-radius: 50px;
+    width: 100px;
+    height: 50px;
+    text-decoration: none;
+    color: var(--verde-color);
+    transition: background-color 0.5s ease, transform 0.2s ease;
+}
+
+
+.botones-login .boton-sesion p{
+  margin: 0;
+}
+
+.botones-login .boton-sesion:hover{
+  background-color: var(--hover-color);
+}
+
 .menu-hamburguesa {
-  display: none; /* Oculto por defecto */
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: white;
-  cursor: pointer;
-}
-
-/* responsive.css */
-
-/* Para tablets */
-@media (max-width: 750px) { 
-  header{
-    display: flex;
-    justify-content: space-between;
-    height: 115px;
-  }
-
-  header a:hover{
-    background: transparent;
-  }
-
-  .contenedor-logo-header img{
-    width: 120px;
-    margin: 20px;
-  }
-
-  header ul{
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-  }
-
-  .menu-hamburguesa {
-    position: relative;
-    left: 20px;
-    height: 100%;
-    display: block; /* Mostrar botón hamburguesa */
-    font-size: 3.5rem;
-    margin: 0;
-  }
-
-
-  .menu-abierto-header{
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    margin: 0;
-    top:115px;
-    width: 100%;
-    height: 25%;
-    background-color: #2e2f04;
-    animation: bajarMenu 0.4s ease-out forwards;
-  }
-
-  .oculto-header{
     display: none;
     visibility: hidden;
   }
 
-  .menu-oculto-header{
+
+/* Para tablets */
+@media (max-width: 900px) { 
+  header{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header .logo{
+    margin: 10px 20px;
+  }
+
+  header button:hover{
+    background: transparent;
+  }
+
+  header a{
+    color: var(--verde-color);
+  }
+  .menu-hamburguesa {
+    display: block;
+    visibility: visible;
+    border: none;
+    background: transparent;
+    color: var(--cafe-color);
+    position: relative;
+    height: 100%;
+    display: block; /* Mostrar botón hamburguesa */
+    font-size: 3.5rem;
+    margin: 0 0 0 20px;
+  }
+
+  .oculto{
+    display: none;
+    visibility: hidden;
+  }
+
+  .menu-oculto{
     display: flex; 
     flex-direction: column;
     position: absolute;
-    top: 115px;
+    top: 135px;
     width: 100%;
-    height: 25%;
+    height: 250px;
     background-color: #2e2f04;
     animation: subirMenu 0.4s ease-in forwards;
   }
 
+  .menu-abierto{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin: 0;
+    top: 135px;
+    width: 100%;
+    height: 250px;
+    background-color: var(--cafe-color);
+    animation: bajarMenu 0.4s ease-out forwards;
+  }
+
+  header ul{
+    flex-direction: column;
+  }
+
+  .contenedor-logo{
+    gap: 35%;
+  }
+
+  .contenedor-logo img{
+    width: 100px;
+    margin: 20px;
+  }
+
+  
+  header .logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .botones-login{
+    margin: 30px 10px 0 0;
+  }
 }
 
+@media (max-width: 600px){
+  header .logo{
+    align-items: center;
+    margin: 0 10px 0 10px;
+  }
+
+  .menu-hamburguesa{
+      margin: 0 0 0 5px;
+  }
+
+  .logo img{
+    width: 140px;
+  }
+
+  .botones-login{
+    width: 100px;
+    position: relative;
+    right: 30px;
+    margin: 0;
+  }
+
+  .boton-sesion{
+    position: relative;
+    left: 20px;
+  }
+
+  .boton-registrarse{
+    display: none;
+    visibility: hidden;
+  }
+}
   
 @keyframes bajarMenu {
   from {
@@ -144,4 +232,3 @@ header a:hover{
     opacity: 0;
   }
 }
-  

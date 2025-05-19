@@ -13,7 +13,7 @@ export const MenuLateral = ({
   onToggleMenu 
 }) => {
   return (
-    <aside className={menuAbierto ? (animacionActiva ? "menu-oculto" : "menu-abierto") : "contenedor-left"}>
+    <aside className={menuAbierto ? (animacionActiva ? "menu-oculto-carrito" : "menu-abierto-carrito") : "contenedor-left"}>
       <section className="contenedor-logo-productos">
         <Link to="/">
           <img src="/img/logos/joly-logo.png" alt="logo jolyGuacamoly" />

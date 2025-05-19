@@ -145,7 +145,7 @@ ul .categoria-seleccionada {
         cursor: pointer;
     }
 
-    .menu-abierto {
+    .menu-abierto-carrito {
         position: absolute;
         width: 100%;
         top: 0;
@@ -154,7 +154,7 @@ ul .categoria-seleccionada {
         animation: bajarMenu 0.4s ease-out forwards;
     }
 
-    .menu-oculto {
+    .menu-oculto-carrito {
         position: absolute;
         width: 100%;
         top: 0;
