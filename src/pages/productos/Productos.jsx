@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CardProductos from '../../components/card_Producto/CardProductos';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
-import './Productos.css';
+import './productos.css';
 
 function Productos() {
   // Datos de productos locales
