@@ -3,7 +3,7 @@ import Login from "../pages/login/Login"
 import Inicio from "../pages/inicio/Inicio"
 import Registrarse from "../pages/registrarse/Registrarse" 
 import Productos from "../pages/productos/Productos"
-import Carrito from "../pages/carrito/Carrito"
+import Recetas from "../pages/recetas/Recetas"
 
 export let enrutador = [
     {
@@ -27,7 +27,7 @@ export let enrutador = [
         element: <Productos />
     },
     {
-        path: '/carrito',
-        element: <Carrito />
+        path: '/recetas',
+        element: <Recetas />
     }
 ]

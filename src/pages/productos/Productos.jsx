@@ -1,90 +1,80 @@
-import React, { useState, useEffect } from "react";
-import { FaArrowLeft } from "react-icons/fa";
-import { useNavigate, Link } from "react-router-dom";
-import { MenuLateral } from "../../components/menuLateral/MenuLateral";
-import CardProductos from "../../components/card_Producto/CardProductos";
-import { productos } from "../../services/database";
-import "./productos.css";
+import React, { useState, useEffect } from 'react';
+import CardProductos from '../../components/card_Producto/CardProductos';
+import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
+import './Productos.css';
 
-export default function Productos() {
-  const navigate = useNavigate();
-  const categorias = ["Todos", "categoria1", "categoria2", "categoria3"];
-  const [categoriaActiva, setCategoriaActiva] = useState("Todos");
-  const [menuAbierto, setMenuAbierto] = useState(false);
-  const [animacionActiva, setAnimacionActiva] = useState(false);
-
-  const toggleMenu = () => {
-    if (menuAbierto) {
-      setAnimacionActiva(true);
-      setTimeout(() => {
-        setMenuAbierto(false);
-        setAnimacionActiva(false);
-      }, 400);
-    } else {
-      setMenuAbierto(true);
+function Productos() {
+  // Datos de productos locales
+  const productosData = [
+    {
+      id: 1,
+      nombre: "Guacamole Clásico",
+      descripcion: "Tradicional receta con aguacates frescos",
+      precio: 15000,
+      precioOriginal: 18000,
+      imagen: "/img/productos/natural.png",
+      categoria: "Guacamoles",
+      oferta: true
+    },
+    {
+      id: 2,
+      nombre: "Hummus Especial",
+      descripcion: "Versión picante para los amantes a lo picante",
+      precio: 12000,
+      imagen: "/img/productos/humus.png",
+      categoria: "Hummus",
+      oferta: false
+    },
+    {
+      id: 3, 
+      nombre: "Guacamole Picante",
+      descripcion: "Con toque de chile habanero y cilantro fresco",
+      precio: 10000,
+      imagen: "/img/productos/picante.png",
+      categoria: "Guacamoles"
     }
-  };
+  ];
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(min-width: 700px)");
-    const handleResize = () => {
-      if (mediaQuery.matches) {
-        setMenuAbierto(false);
-        setAnimacionActiva(false);
-      }
-    };
-    mediaQuery.addEventListener("change", handleResize);
-    return () => mediaQuery.removeEventListener("change", handleResize);
-  }, []);
+  const [categoriaActiva, setCategoriaActiva] = useState('Todos');
+  const categorias = ['Todos', ...new Set(productosData.map(p => p.categoria))];
+
+  const productosFiltrados = categoriaActiva === 'Todos' 
+    ? productosData 
+    : productosData.filter(p => p.categoria === categoriaActiva);
 
   return (
-    <div className="contenedor-contenido">
-      <Link to="/">
-        <FaArrowLeft className="flecha-regresar" />
-      </Link>
+    <>
+    <Header />
+    <main className="main-productos">
+      {/* Hero Section */}
+      <section className="hero-productos" >
+        <h2>Nuestros Sabores Artesanales</h2>
+        <p>Hechos con ingredientes 100% naturales</p>
+      </section>
 
-      <button
-        className={
-          menuAbierto
-            ? "menu-hamburguesa-producto menu-hamburguesa-producto-desplegado"
-            : "menu-hamburguesa-producto"
-        }
-        onClick={toggleMenu}
-      >
-        ☰
-      </button>
+      {/* Filtros */}
+      <div className="filtros-container">
+        {categorias.map(categoria => (
+          <button
+            key={categoria}
+            className={`filtro-btn ${categoria === categoriaActiva ? 'active' : ''}`}
+            onClick={() => setCategoriaActiva(categoria)}
+          >
+            {categoria}
+          </button>
+        ))}
+      </div>
 
-      <MenuLateral
-        menuAbierto={menuAbierto}
-        animacionActiva={animacionActiva}
-        tipo="productos"
-        categorias={categorias}
-        categoriaActiva={categoriaActiva}
-        setCategoriaActiva={setCategoriaActiva}
-        onToggleMenu={toggleMenu}
-      />
-
-      <main className="contenedor-productos">
-        <h2 className="titulo">{categoriaActiva}</h2>
-        <section className="productos">
-          {productos
-            .filter(
-              (producto) =>
-                categoriaActiva === "Todos" ||
-                producto.categoria === categoriaActiva
-            )
-            .map((producto) => (
-              <CardProductos
-                key={producto.id}
-                clase="card-productos"
-                titulo={producto.nombre}
-                img={producto.img}
-                descripcion={`$${producto.precio}`}
-                mensajeButton="Añadir"
-              />
-            ))}
-        </section>
-      </main>
-    </div>
+      <section className="grid-productos">
+        {productosFiltrados.map(producto => (
+          <CardProductos key={producto.id} producto={producto} />
+        ))}
+      </section>
+    </main>
+    <Footer />
+    </>
   );
-}
+};
+
+export default Productos;

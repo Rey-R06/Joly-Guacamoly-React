@@ -15,7 +15,7 @@ export default function Header() {
     { path: '', text: 'Inicio' },
     { path: 'productos', text: 'Productos' },
     { path: 'joly', text: 'Joly' },
-    { path: 'clientes', text: 'Clientes' }
+    { path: 'recetas', text: 'Recetas' }
   ];
 
 function toggleMenu() {

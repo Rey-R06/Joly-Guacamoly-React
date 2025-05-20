@@ -1,0 +1,38 @@
+{
+  "productos": [
+    {
+      "id": 1,
+      "nombre": "Guacamole Clásico",
+      "descripcion": "Tradicional receta mexicana",
+      "precio": 15000,
+      "precioOriginal": 18000,
+      "imagen": "/img/productos/guacamole-clasico.webp",
+      "categoria": "Guacamoles",
+      "oferta": true,
+      "stock": 50,
+      "rating": 4.8
+    },
+    {
+      "id": 2,
+      "nombre": "Hummus Especiado",
+      "descripcion": "Versión picante con paprika",
+      "precio": 12000,
+      "imagen": "/img/productos/hummus-picante.webp",
+      "categoria": "Hummus",
+      "oferta": false,
+      "stock": 35,
+      "rating": 4.5
+    },
+    {
+      "id": 3,
+      "nombre": "Guacamole Picante",
+      "descripcion": "Con toque de chile habanero",
+      "precio": 10000,
+      "imagen": "/img/productos/guacamole-picante.webp",
+      "categoria": "Guacamoles",
+      "oferta": true,
+      "stock": 20,
+      "rating": 4.9
+    }
+  ]
+}
