@@ -3,6 +3,7 @@ import Login from "../pages/login/Login"
 import Inicio from "../pages/inicio/Inicio"
 import Registrarse from "../pages/registrarse/Registrarse" 
 import Productos from "../pages/productos/Productos"
+import Joly from "../pages/joly/Joly"
 import Recetas from "../pages/recetas/Recetas"
 
 export let enrutador = [
@@ -29,5 +30,9 @@ export let enrutador = [
     {
         path: '/recetas',
         element: <Recetas />
+    },
+    {
+        path: '/joly',
+        element: <Joly />
     }
 ]

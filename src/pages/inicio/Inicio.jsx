@@ -31,7 +31,7 @@ export default function Inicio() {
                 campesino.
               </p>
 
-              <Link to="/sobre-nosotros" className="boton-minimalista">
+              <Link to="/joly" className="boton-minimalista">
                 <span className="icono-aguacate">🥑</span>
                 <span>Conócenos</span>
                 <span className="flecha">→</span>
@@ -52,7 +52,7 @@ export default function Inicio() {
             </div>
           </div>
         </section>
-        
+
         <Galeria />
 
         <section className="beneficios">

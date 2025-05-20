@@ -1,5 +1,6 @@
 /* Contact Bar Styles */
 .contact-bar {
+  position: relative;
   background: var(--cafe-color);
   padding: 25px 0;
   color: white;

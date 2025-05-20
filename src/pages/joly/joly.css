@@ -1,0 +1,160 @@
+.sobre-nosotros {
+  background: linear-gradient(
+      rgba(253, 248, 229, 0.226),
+      var(--verde-color)
+    ),
+    url('/img/banner/fondo.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 30px 20px 160px;
+  text-align: center;
+  position: relative;
+  top: 135px;
+  overflow: hidden;
+}
+
+.sobre-nosotros-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.sobre-nosotros h2 {
+  font-size: 5rem;
+  color: var(--cafe-color);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.sobre-nosotros h2 span {
+  color: var(--verde-color);
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.story {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  animation: slideUp 1s ease-in-out;
+}
+
+.story p {
+  font-size: 1.05rem;
+  color: var(--cafe-color);
+  line-height: 1.7;
+  max-width: 850px;
+  text-align: justify;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.img-fundadores {
+  width: 100%;
+  max-width: 520px;
+  border-radius: 16px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+.img-fundadores:hover {
+  transform: scale(1.02);
+}
+
+.mision-vision {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 60px;
+  animation: fadeIn 1s ease-in;
+}
+
+.mision, .vision {
+  background-color: #ffffff;
+  border: 2px dashed var(--verde-color);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.mision h3, .vision h3 {
+  color: var(--cafe-color);
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+
+.mision p, .vision p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.galeria-nosotros {
+  margin-top: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.galeria-nosotros img {
+  width: 170px;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--cafe-color);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+}
+
+.galeria-nosotros img:hover {
+  transform: scale(1.1) rotate(2deg);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 500px) {
+  .story, .mision-vision {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .mision-vision {
+    grid-template-columns: 1fr;
+    padding: 0;
+    gap: 20px;
+  }
+
+  .galeria-nosotros img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .img-fundadores {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .sobre-nosotros h2 {
+    font-size: 2rem;
+  }
+
+  .mision h3, .vision h3 {
+    font-size: 1.2rem;
+  }
+
+  .mision p, .vision p, .story p {
+    font-size: 0.95rem;
+  }
+}
