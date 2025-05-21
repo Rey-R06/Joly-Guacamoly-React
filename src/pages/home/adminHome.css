@@ -1,0 +1,64 @@
+.admin-home {
+  background-color: #f8fbe9;
+  min-height: 100vh;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header h1 {
+  color: var(--cafe-color);
+}
+
+.btn-volver {
+  background-color: var(--verde-color);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-volver:hover {
+  background-color: var(--hover-color);
+}
+
+.admin-panel{
+  position: relative;
+  top: 135px;
+}
+
+.admin-panel h2 {
+  color: var(--cafe-color);
+  margin-bottom: 20px;
+}
+
+.admin-cards {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.admin-card {
+  min-width: 250px;
+  background-color: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--verde-color);
+  border: 2px solid var(--verde-color);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.admin-card:hover {
+  transform: scale(1.05);
+  background-color: #f1fddc;
+}

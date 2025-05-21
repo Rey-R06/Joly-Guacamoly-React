@@ -5,44 +5,22 @@ import Footer from '../../components/footer/Footer';
 import './productos.css';
 
 function Productos() {
-  // Datos de productos locales
-  const productosData = [
-    {
-      id: 1,
-      nombre: "Guacamole Clásico",
-      descripcion: "Tradicional receta con aguacates frescos",
-      precio: 15000,
-      precioOriginal: 18000,
-      imagen: "/img/productos/natural.png",
-      categoria: "Guacamoles",
-      oferta: true
-    },
-    {
-      id: 2,
-      nombre: "Hummus Especial",
-      descripcion: "Versión picante para los amantes a lo picante",
-      precio: 12000,
-      imagen: "/img/productos/humus.png",
-      categoria: "Hummus",
-      oferta: false
-    },
-    {
-      id: 3, 
-      nombre: "Guacamole Picante",
-      descripcion: "Con toque de chile habanero y cilantro fresco",
-      precio: 10000,
-      imagen: "/img/productos/picante.png",
-      categoria: "Guacamoles"
-    }
-  ];
+  
+const [productos, setProductos] = useState([]);
+const [categoriaActiva, setCategoriaActiva] = useState('Todos');
 
-  const [categoriaActiva, setCategoriaActiva] = useState('Todos');
-  const categorias = ['Todos', ...new Set(productosData.map(p => p.categoria))];
+useEffect(() => {
+  fetch('http://localhost:3001/productos')
+    .then(res => res.json())
+    .then(data => setProductos(data))
+    .catch(err => console.error('Error al cargar productos:', err));
+}, []);
 
-  const productosFiltrados = categoriaActiva === 'Todos' 
-    ? productosData 
-    : productosData.filter(p => p.categoria === categoriaActiva);
+const categorias = ['Todos', ...new Set(productos.map(producto => producto.categoria))];
 
+const productosFiltrados = categoriaActiva === 'Todos'
+  ? productos
+  : productos.filter(p => p.categoria === categoriaActiva);
   return (
     <>
     <Header />

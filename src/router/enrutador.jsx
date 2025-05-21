@@ -5,6 +5,7 @@ import Registrarse from "../pages/registrarse/Registrarse"
 import Productos from "../pages/productos/Productos"
 import Joly from "../pages/joly/Joly"
 import Recetas from "../pages/recetas/Recetas"
+import AdminHome from "../pages/home/AdminHome"
 
 export let enrutador = [
     {
@@ -34,5 +35,9 @@ export let enrutador = [
     {
         path: '/joly',
         element: <Joly />
+    },
+    {
+        path: '/admin-home',
+        element: <AdminHome />
     }
 ]

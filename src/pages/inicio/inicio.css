@@ -1,6 +1,6 @@
 @import '../../style/colores.module.css';
-/* Contenedor principal con fondo SVG */
-/* Estilo minimalista-moderno */
+
+
 .sobre-nosotros-moderno {
   display: flex;
   min-height: 50vh;
