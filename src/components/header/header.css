@@ -13,7 +13,6 @@ header{
     font-size: 1.5rem;
   }
   
-
 header .logo{
   margin: 30px 40px 0 ;
 }
@@ -43,6 +42,7 @@ header a{
     background: none;
     text-decoration: none;
   }
+
 
 .botones-login{
     width: 250px;

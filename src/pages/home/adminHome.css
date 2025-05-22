@@ -1,3 +1,11 @@
+.admin-cards a{
+  text-decoration: none;
+}
+
+.admin-cards li{
+  list-style: none;
+}
+
 .admin-home {
   background-color: #f8fbe9;
   min-height: 100vh;

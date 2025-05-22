@@ -1,29 +1,56 @@
-import { useNavigate } from 'react-router-dom';
-import './adminHome.css';
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { alertaRedireccion } from "../../helpers/funciones";
+import "./adminHome.css";
 
-const AdminHome = () => {
-  const navigate = useNavigate();
+export default function AdminHome(){
+const navigate = useNavigate()
+
+  function cerrarSesion() {
+    localStorage.removeItem("token")
+    localStorage.removeItem("usuario")
+    alertaRedireccion(navigate, "Sesion finalizada", "En Breves segundos cerraremos la sesión", "info", "/")
+  }
 
   return (
     <section className="admin-home">
       <header className="admin-header">
         <h1>Panel de Administración</h1>
-        <button className="btn-volver" onClick={() => navigate('/')}>
+        <button onClick={cerrarSesion} type='button' className="aplicacion__menu-lateral-navegacion-item">Cerrar sesión</button>
+        <Link to={"/"} className="btn-volver">
           Ver Sitio Público
-        </button>
+        </Link>
       </header>
 
       <section className="admin-panel">
         <h2>Gestión</h2>
-        <div className="admin-cards">
-          <div className="admin-card" onClick={() => navigate('/admin/productos')}>Productos</div>
-          <div className="admin-card" onClick={() => navigate('/admin/clientes')}>Clientes</div>
-          <div className="admin-card" onClick={() => navigate('/admin/pedidos')}>Pedidos</div>
-          <div className="admin-card" onClick={() => navigate('/admin/usuarios')}>Administradores</div>
-        </div>
+        <ul className="admin-cards">
+          <li>
+            <Link to="gestion-productos">
+              <button className="admin-card">Productos</button>
+            </Link>
+          </li>
+          <li>
+            <Link to="gestion-clientes">
+              <button className="admin-card">Clientes</button>
+            </Link>
+          </li>
+          <li>
+            <Link to="gestion-pedidos">
+              <button className="admin-card">Pedidos</button>
+            </Link>
+          </li>
+          <li>
+            <Link to="gestion-admins">
+              <button className="admin-card">Administradores</button>
+            </Link>
+          </li>
+        </ul>
+
+        {/* Aquí se mostrará el componente hijo seleccionado */}
+        <Outlet />
       </section>
     </section>
   );
 };
 
-export default AdminHome;
+
