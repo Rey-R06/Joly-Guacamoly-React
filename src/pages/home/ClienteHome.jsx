@@ -1,7 +1,9 @@
-
+import HeaderHome from "../../components/headerHome/HeaderHome";
 
 export default function ClienteHome() {
   return (
-    <div>ClienteHome</div>
-  )
+    <>
+      <HeaderHome cabecera={"Panel cliente"}/>
+    </>
+  );
 }

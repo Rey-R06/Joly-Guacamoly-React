@@ -1,9 +1,6 @@
-.admin-cards a{
-  text-decoration: none;
-}
-
-.admin-cards li{
-  list-style: none;
+ul {
+  padding-left: 0;
+  margin: 0;
 }
 
 .admin-home {
@@ -11,38 +8,22 @@
   min-height: 100vh;
 }
 
-.admin-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.admin-header h1 {
-  color: var(--cafe-color);
-}
-
-.btn-volver {
-  background-color: var(--verde-color);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.btn-volver:hover {
-  background-color: var(--hover-color);
-}
-
 .admin-panel{
-  position: relative;
-  top: 135px;
+  margin: 10px 0;
 }
 
-.admin-panel h2 {
+.admin-panel h2{
+  font-size: 2.5rem;
   color: var(--cafe-color);
-  margin-bottom: 20px;
+  margin: 20px 30px;
+}
+
+.admin-cards a{
+  text-decoration: none;
+}
+
+.admin-cards li{
+  list-style: none;
 }
 
 .admin-cards {
@@ -69,4 +50,11 @@
 .admin-card:hover {
   transform: scale(1.05);
   background-color: #f1fddc;
+}
+
+/* Responsive */
+@media (max-width: 460px) {
+  .admin-cards{
+    gap: 10px;
+  }
 }
