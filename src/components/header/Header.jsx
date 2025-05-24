@@ -31,7 +31,7 @@ export default function Header() {
     }
   }
   return (
-    <header>
+    <header className="header-principal">
       <section className="logo-nav">
         <button className="menu-hamburguesa" onClick={toggleMenu}>
           ☰
