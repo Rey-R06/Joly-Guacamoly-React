@@ -8,10 +8,10 @@ export function alertaConfirmacion (){
       });
 }
 
-export function alertaError (){
+export function alertaError (mensaje){
     Swal.fire({
         title: "Error",
-        text: "Usuario y/o contraseña incorrecta",
+        text: mensaje,
         icon: "error"
       });
 }

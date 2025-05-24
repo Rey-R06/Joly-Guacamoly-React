@@ -1,4 +1,3 @@
-import Home from "../pages/home/Home"
 import Login from "../pages/login/Login"
 import RutaProtegida from "../components/RutaProtegida"
 import Inicio from "../pages/inicio/Inicio"
@@ -7,6 +6,7 @@ import Productos from "../pages/productos/Productos"
 import Joly from "../pages/joly/Joly"
 import Recetas from "../pages/recetas/Recetas"
 import AdminHome from "../pages/home/AdminHome"
+import ClienteHome from "../pages/home/ClienteHome"
 import GestionProductos from "../pages/gestionAdmin/gestionProductos/GestionProductos"
 import GestionAdmins from "../pages/gestionAdmin/gestionAdmins/GestionAdmins"
 import GestionClientes from "../pages/gestionAdmin/gestionClientes/GestionClientes"
@@ -16,10 +16,6 @@ export let enrutador = [
     {
         path: '/',
         element: <Inicio />
-    },
-    {
-        path: '/home',
-        element: <Home />
     },
     {
         path: '/login',
@@ -62,5 +58,10 @@ export let enrutador = [
         element: <GestionPedidos />
       }
     ],
-    }
+    },,
+    {
+        path: '/cliente-home/',
+        element: <RutaProtegida proteger = {<ClienteHome />}/>,
+    children: [],
+    },
 ]
