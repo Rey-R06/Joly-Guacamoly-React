@@ -3,6 +3,7 @@ import RutaProtegida from "../components/RutaProtegida"
 import Inicio from "../pages/inicio/Inicio"
 import Registrarse from "../pages/registrarse/Registrarse" 
 import Productos from "../pages/productos/Productos"
+import Carrito from "../pages/productos/Carrito"
 import Joly from "../pages/joly/Joly"
 import Recetas from "../pages/recetas/Recetas"
 import AdminHome from "../pages/home/AdminHome"
@@ -28,6 +29,10 @@ export let enrutador = [
     {
         path: '/productos',
         element: <Productos />
+    },
+    {
+        path: '/carrito',
+        element: <Carrito />
     },
     {
         path: '/recetas',
