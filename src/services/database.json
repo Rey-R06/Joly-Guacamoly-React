@@ -31,7 +31,8 @@
         3
       ],
       "historialPedidos": [
-        101
+        101,
+        102
       ]
     },
     {
@@ -46,7 +47,6 @@
         2
       ],
       "historialPedidos": [
-        102,
         103
       ]
     },
@@ -132,7 +132,7 @@
     },
     {
       "id": "102",
-      "clienteId": 2,
+      "clienteId": 1,
       "fecha": "2024-05-16T10:15:00Z",
       "estado": "en_proceso",
       "total": 24000,
@@ -145,6 +145,22 @@
         }
       ],
       "direccionEntrega": "Av. Principal #22-33"
-    }
+    },
+  {
+    "id": "103",
+    "clienteId": 2,
+    "fecha": "2024-05-16T10:15:00Z",
+    "estado": "en_proceso",
+    "total": 12000,
+    "metodoPago": "efectivo",
+    "items": [
+      {
+        "productoId": 3,
+        "cantidad": 1,
+        "precioUnitario": 12000
+      }
+    ],
+    "direccionEntrega": "Av. nose #22-33"
+  }
   ]
 }

@@ -1,0 +1,17 @@
+.panel-cliente{
+    min-height: 100vh; /* Asegura que al menos cubra la altura del viewport */
+    width: 100%;
+    background: url(/img/banner/fondo.svg) no-repeat center center fixed;
+    background-size: cover;
+    padding: 2% 8%;
+}
+
+.panel-cliente .opciones-cliente{
+    font-size: 1.8rem;
+    list-style: none;
+}
+
+.panel-cliente .opciones-cliente a{
+    text-decoration: none;
+    color: var(--cafe-color);
+}

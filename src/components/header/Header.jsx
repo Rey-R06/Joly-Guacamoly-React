@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
 import { useState } from "react";
 import "./header.css";
 
@@ -61,7 +62,12 @@ export default function Header() {
         </nav>
       </section>
       <section className="botones-login">
-        {usuarioSesion ? (<Link className="usuario-sesion" to={"admin-home"}><h3>{usuarioSesion.user}</h3></Link>) : (
+        {usuarioSesion ? (
+          <Link className="usuario-sesion" to={usuarioSesion.rol ? "/admin-home" : "/cliente-home"}>
+            <FaUserCircle size={50} color="#773611ff" />
+            <span>{usuarioSesion.user}</span>
+          </Link>
+        ) : (
           <>
             <Link to="/login" className="boton-registrarse">
               <p>Login</p>

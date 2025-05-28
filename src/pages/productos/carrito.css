@@ -24,10 +24,22 @@
   flex-direction: column;
 }
 
+.carrito-vacio{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0;
+}
+
+.carrito-vacio p{
+  color: #773611ff;
+  font-size: 1.5rem;
+}
 
 /* Título */
 .carrito-contenedor h2 {
   color: var(--cafe-color);
+  margin-left: 10%;
   margin-bottom: 1.5rem;
 }
 
@@ -110,7 +122,7 @@
 /* Total */
 .carrito-total {
   text-align: right;
-  margin-top: 2rem;
+  margin: 2rem;
 }
 
 .carrito-total h3 {

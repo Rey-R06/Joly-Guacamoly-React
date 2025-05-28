@@ -75,7 +75,7 @@ export default function Login() {
   return (
     <>
       <main className="contenedor-form">
-        <FaArrowLeft onClick={() => navigate(-1)} className="flecha-regresar" />
+        <FaArrowLeft onClick={() => navigate("/")} className="flecha-regresar" />
         <form className="form">
           <span className="title">Inicio sesión</span>
           <label htmlFor="username" className="label">

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaShoppingCart } from "react-icons/fa";
 import "./carrito.css";
 
 let apiProductos = "http://localhost:3001/productos";
@@ -80,9 +80,7 @@ export default function Carrito() {
   }
 
   return (
-    <section
-      className="carrito-contenedor"
-    >
+    <section className="carrito-contenedor">
       <FaArrowLeft
         onClick={() => navigate(-1)}
         className="flecha-regresar-carrito"
@@ -90,29 +88,36 @@ export default function Carrito() {
       <h2>Tu Carrito</h2>
 
       <div className="lista-carrito">
-        {productosEnCarrito.map((producto) => (
-          <div className="producto-carrito" key={producto.id}>
-            <img src={producto.imagen} alt={producto.nombre} />
-            <section className="contenedor-info">
-              <section>
-                <h4>{producto.nombre}</h4>
-                <p>{producto.descripcion}</p>
-                <p>
-                  <strong>${producto.precio}</strong>
-                </p>
-              </section>
-              <div className="contenedor-button">
-                <button onClick={() => restarProductoDelCarrito(producto.id)}>
-                  -
-                </button>
-                <p className="cantida-producto">{producto.cantidad}</p>
-                <button onClick={() => sumarProductoDelCarrito(producto.id)}>
-                  +
-                </button>
-              </div>
-            </section>
+        {productosEnCarrito.length === 0 ? (
+          <div className="carrito-vacio">
+            <FaShoppingCart size={100} color="#b6bb18ff" />
+            <p>Tu carrito está vacío</p>
           </div>
-        ))}
+        ) : (
+          productosEnCarrito.map((producto) => (
+            <div className="producto-carrito" key={producto.id}>
+              <img src={producto.imagen} alt={producto.nombre} />
+              <section className="contenedor-info">
+                <section>
+                  <h4>{producto.nombre}</h4>
+                  <p>{producto.descripcion}</p>
+                  <p>
+                    <strong>${producto.precio}</strong>
+                  </p>
+                </section>
+                <div className="contenedor-button">
+                  <button onClick={() => restarProductoDelCarrito(producto.id)}>
+                    -
+                  </button>
+                  <p className="cantida-producto">{producto.cantidad}</p>
+                  <button onClick={() => sumarProductoDelCarrito(producto.id)}>
+                    +
+                  </button>
+                </div>
+              </section>
+            </div>
+          ))
+        )}
       </div>
 
       <div className="carrito-total">
@@ -123,7 +128,7 @@ export default function Carrito() {
             0
           )}
         </h3>
-        <button className="btn-finalizar">Finalizar Compra</button>
+        <button className="btn-finalizar">Hacer Pedido</button>
       </div>
     </section>
   );

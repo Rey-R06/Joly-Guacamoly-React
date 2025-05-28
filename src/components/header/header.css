@@ -89,6 +89,15 @@
   background-color: var(--hover-color);
 }
 
+
+  .botones-login .usuario-sesion{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+
+
 .menu-hamburguesa {
     display: none;
     visibility: hidden;
@@ -166,7 +175,17 @@
     width: 100px;
     margin: 20px;
   }
+  
+  .usuario-sesion span{
+    color: var(--cafe-color);
+  }
 
+  .botones-login .usuario-sesion{
+    gap: 0;
+    flex-direction: column;
+    position: relative;
+    right: -25%;
+  }
   
   .header-principal .logo{
     display: flex;
@@ -196,7 +215,7 @@
   .botones-login{
     width: 100px;
     position: relative;
-    right: 30px;
+    right: 25px;
     margin: 0;
   }
 
@@ -208,6 +227,10 @@
   .boton-registrarse{
     display: none;
     visibility: hidden;
+  }
+  
+  .botones-login .usuario-sesion{
+    right: 0;
   }
 }
   
