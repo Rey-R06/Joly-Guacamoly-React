@@ -19,7 +19,7 @@
   ],
   "clientes": [
     {
-      "id": "1",
+      "id": "03cc",
       "nombre": "Juan Pérez",
       "user": "cliente",
       "email": "juan@example.com",
@@ -36,7 +36,7 @@
       ]
     },
     {
-      "id": "2",
+      "id": "02cc",
       "nombre": "María Gómez",
       "user": "cliente2",
       "email": "maria@example.com",
@@ -58,7 +58,10 @@
       "password": "camilo",
       "telefono": "",
       "favoritos": [],
-      "historialPedidos": []
+      "historialPedidos": [
+        "b27e",
+        "4fda"
+      ]
     },
     {
       "id": "83cc",
@@ -111,7 +114,7 @@
   "pedidos": [
     {
       "id": "101",
-      "clienteId": 1,
+      "clienteId": "03cc",
       "fecha": "2024-05-15T14:30:00Z",
       "estado": "entregado",
       "total": 42000,
@@ -132,7 +135,7 @@
     },
     {
       "id": "102",
-      "clienteId": 1,
+      "clienteId": "03cc",
       "fecha": "2024-05-16T10:15:00Z",
       "estado": "en_proceso",
       "total": 24000,
@@ -146,21 +149,53 @@
       ],
       "direccionEntrega": "Av. Principal #22-33"
     },
-  {
-    "id": "103",
-    "clienteId": 2,
-    "fecha": "2024-05-16T10:15:00Z",
-    "estado": "en_proceso",
-    "total": 12000,
-    "metodoPago": "efectivo",
-    "items": [
-      {
-        "productoId": 3,
-        "cantidad": 1,
-        "precioUnitario": 12000
-      }
-    ],
-    "direccionEntrega": "Av. nose #22-33"
-  }
+    {
+      "id": "103",
+      "clienteId": "02cc",
+      "fecha": "2024-05-16T10:15:00Z",
+      "estado": "en_proceso",
+      "total": 12000,
+      "metodoPago": "efectivo",
+      "items": [
+        {
+          "productoId": 3,
+          "cantidad": 1,
+          "precioUnitario": 12000
+        }
+      ],
+      "direccionEntrega": "Av. nose #22-33"
+    },
+    {
+      "id": "b27e",
+      "clienteId": "01cc",
+      "fecha": "2025-05-29T04:00:35.403Z",
+      "estado": "pendiente",
+      "total": 30000,
+      "metodoPago": "efectivo",
+      "direccionEntrega": "sss",
+      "items": [
+        {
+          "productoId": "2",
+          "cantidad": 2,
+          "precioUnitario": 15000
+        }
+      ]
+    },
+    {
+      "id": "4fda",
+      "clienteId": "01cc",
+      "fecha": "2025-05-29T04:13:10.758Z",
+      "estado": "pendiente",
+      "total": 12000,
+      "metodoPago": "efectivo",
+      "direccionEntrega": "gfgfd",
+      "items": [
+        {
+          "productoId": "3",
+          "cantidad": 1,
+          "precioUnitario": 12000
+        }
+      ]
+    }
   ]
 }

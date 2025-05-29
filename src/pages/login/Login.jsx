@@ -1,4 +1,4 @@
-import "./login.css";
+import "./loginYRegistro.css";
 import { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";

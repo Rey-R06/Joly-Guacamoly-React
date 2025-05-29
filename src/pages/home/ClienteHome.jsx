@@ -38,13 +38,16 @@ export default function ClienteHome() {
   }, [usuarioSesion, idPedidos.length]);
 
   useEffect(() => {
-    if (idPedidos.length > 0 && pedidosDb.length > 0) {
-      const filtrados = pedidosDb.filter((pedido) =>
-        idPedidos.includes(Number(pedido.id))
-      );
-      setPedidosUsuario(filtrados);
-    }
-  }, [idPedidos, pedidosDb]);
+  if (usuarioSesion && pedidosDb.length > 0) {
+    const pedidosIds = usuarioSesion.historialPedidos?.map((id) => id.toString()) || [];
+    setIdPedidos(pedidosIds);
+
+    const filtrados = pedidosDb.filter((pedido) =>
+      pedidosIds.includes(pedido.id.toString())
+    );
+    setPedidosUsuario(filtrados);
+  }
+}, [usuarioSesion, pedidosDb]);
 
   return (
     <>
@@ -56,6 +59,7 @@ export default function ClienteHome() {
           </li>
         </ul>
         <section className="pedidos-clientes">
+          {console.log(pedidosUsuario)}
           {pedidosUsuario.map((pedido) => (
             <PedidoCard key={pedido.id} pedido={pedido} productosDb={productosDb} />
           ))}

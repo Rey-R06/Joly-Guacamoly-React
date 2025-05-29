@@ -51,7 +51,7 @@ function RecetasDestacadas() {
 
   return (
     <>
-    <Header />
+      <Header />
       <section className="recetas-joly">
         <div className="recetas-header">
           <h2>
@@ -94,21 +94,13 @@ function RecetasDestacadas() {
                 </div>
 
                 <Link to={`/recetas/${receta.id}`} className="btn-receta-joly">
-                  Ver paso a paso
-                  <span className="icono-aguacate">🥑</span>
+                  <span className="icono-aguacate">→Ver paso a paso🥑</span>
                 </Link>
               </div>
             </article>
           ))}
         </div>
-
-        <div className="cta-recetas">
-          <Link to="/recetas" className="btn-todas-recetas">
-            Ver todas las recetas →
-          </Link>
-        </div>
       </section>
-
       <Footer />
     </>
   );

@@ -1,0 +1,103 @@
+.contenedor-form {
+  min-height: 100vh;
+  background: url(/img/banner/fondo.svg);
+  background-attachment: fixed;
+  background-size: cover;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+
+.form {
+  background-color: #ffffff;
+  padding: 2.5rem 2rem;
+  border-radius: 10px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.07);
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #A3C935;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3A5A40;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #3A5A40;
+}
+
+.input {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #CCCCCC;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+  background-color: #FAF9F6;
+}
+
+.input:focus {
+  border-color: #A3C935;
+  outline: none;
+  background-color: #fff;
+}
+
+.submit {
+  background-color: #A3C935;
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit:hover {
+  background-color: #8EB02F;
+}
+
+.signup-link {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #3A5A40;
+}
+
+.signup-link a {
+  color: #A3C935;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+.flecha-regresar {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-size: 1.5rem;
+  color: #3A5A40;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.flecha-regresar:hover {
+  color: #A3C935;
+}

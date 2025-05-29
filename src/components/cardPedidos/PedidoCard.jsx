@@ -11,7 +11,7 @@ export default function PedidoCard({ pedido, productosDb }) {
       <div className="productos-pedido">
         {pedido.items.map((item, index) => {
           const producto = productosDb.find(
-            (prod) => Number(prod.id) === Number(item.productoId)
+            (prod) => prod.id.toString() === item.productoId.toString()
           );
 
           return producto ? (
