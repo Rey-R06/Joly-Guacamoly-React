@@ -1,19 +1,20 @@
 import Swal from "sweetalert2";
 
-export const alertaConfirmacion = (titulo, texto) => {
+export function alertaConfirmacion(titulo, mensaje) {
   return Swal.fire({
     title: titulo,
-    text: texto,
+    text: mensaje,
     icon: "success",
     confirmButtonText: "Aceptar",
   });
-};
+}
 
 export function alertaError(mensaje) {
-  Swal.fire({
-    title: "Error",
-    text: mensaje,
+  return Swal.fire({
     icon: "error",
+    title: "Oops...",
+    text: mensaje,
+    confirmButtonText: "Aceptar",
   });
 }
 

@@ -1,0 +1,63 @@
+import { useState } from "react";
+import "./registroInvitado.css";
+
+export default function RegistroInvitado({
+  isOpen,
+  datos,
+  onClose,
+  onRegister,
+}) {
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-contenido">
+        <h2>¿Te gustaría registrarte?</h2>
+        <p>
+          Ya tenemos tus datos de contacto. Solo necesitas crear un usuario y
+          contraseña para que puedas consultar tu pedido y obtener promociones.
+        </p>
+
+        <form
+          onSubmit={(e) => {
+            console.log(datos);
+            e.preventDefault();
+            onRegister({
+              nombre: datos.nombre,
+              email: datos.email,
+              telefono: datos.telefono,
+              user,
+              password,
+            });
+          }}
+        >
+          <label>Nombre de usuario:</label>
+          <input
+            type="text"
+            value={user}
+            onChange={(e) => setUser(e.target.value)}
+            required
+          />
+
+          <label>Contraseña:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <div className="modal-botones">
+            <button type="submit">Registrarme</button>
+            <button type="button" onClick={onClose}>
+              No, gracias
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}

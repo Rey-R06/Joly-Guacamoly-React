@@ -1,4 +1,3 @@
-import "./loginYRegistro.css";
 import { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,7 +5,8 @@ import {
   alertaError,
   alertaRedireccion,
   generarToken,
-} from "../../helpers/funciones";
+} from "../../../helpers/funciones";
+import "../loginYRegistro.css";
 let apiAdmins = "http://localhost:3001/admins";
 let apiClientes = "http://localhost:3001/clientes";
 

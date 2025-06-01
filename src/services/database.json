@@ -26,13 +26,10 @@
       "password": "cliente",
       "telefono": "3001234567",
       "direccion": "Calle 123 #45-67",
-      "favoritos": [
-        1,
-        3
-      ],
       "historialPedidos": [
         101,
-        102
+        102,
+        "d9d8"
       ]
     },
     {
@@ -43,9 +40,6 @@
       "password": "1",
       "telefono": "3109876543",
       "direccion": "Av. Principal #22-33",
-      "favoritos": [
-        2
-      ],
       "historialPedidos": [
         103
       ]
@@ -56,11 +50,11 @@
       "user": "camilo",
       "email": "camilo",
       "password": "camilo",
-      "telefono": "",
-      "favoritos": [],
+      "telefono": "300",
       "historialPedidos": [
         "b27e",
-        "4fda"
+        "4fda",
+        "0659"
       ]
     },
     {
@@ -70,8 +64,68 @@
       "email": "j",
       "password": "j",
       "telefono": "",
-      "favoritos": [],
       "historialPedidos": []
+    },
+    {
+      "id": "63a0",
+      "nombre": "luis",
+      "user": "luis",
+      "email": "luisgmaiñ.com",
+      "password": "luis",
+      "telefono": "",
+      "historialPedidos": []
+    },
+    {
+      "id": "0c21",
+      "telefono": "3505558208",
+      "user": "re",
+      "password": "re",
+      "historialPedidos": []
+    },
+    {
+      "id": "0ef9",
+      "telefono": "3505558208",
+      "user": "aaaa",
+      "password": "aa",
+      "historialPedidos": [
+        "c2ca"
+      ]
+    },
+    {
+      "id": "1374",
+      "nombre": "juan",
+      "user": "juan",
+      "email": "juan",
+      "password": "juan",
+      "telefono": "666",
+      "historialPedidos": [
+        "ce53",
+        "c04a",
+        "b7c1"
+      ],
+      "direccion": "jeje"
+    },
+    {
+      "id": "2b88",
+      "nombre": "pedido ultimo",
+      "email": "luiscamilorossiibarra@gmail.com",
+      "telefono": "3505558208",
+      "user": "ultimo",
+      "password": "ultimo",
+      "historialPedidos": [
+        "30a3"
+      ]
+    },
+    {
+      "id": "b5bd",
+      "nombre": "ff",
+      "email": "luiscamilorossiibarra@gmail.com",
+      "telefono": "3505558208",
+      "user": "ff",
+      "password": "ff",
+      "historialPedidos": [
+        "b6c9"
+      ]
     }
   ],
   "productos": [
@@ -113,89 +167,68 @@
   ],
   "pedidos": [
     {
-      "id": "101",
-      "clienteId": "03cc",
-      "fecha": "2024-05-15T14:30:00Z",
-      "estado": "entregado",
-      "total": 42000,
-      "metodoPago": "tarjeta",
+      "id": "30a3",
+      "registrado": true,
+      "fecha": "2025-06-01T00:14:01.850Z",
+      "estado": "pendiente",
+      "total": 27000,
+      "metodoPago": "efectivo",
+      "direccionEntrega": "92",
       "items": [
         {
-          "productoId": 1,
-          "cantidad": 2,
+          "productoId": "2",
+          "cantidad": 1,
           "precioUnitario": 15000
         },
         {
-          "productoId": 3,
+          "productoId": "3",
           "cantidad": 1,
           "precioUnitario": 12000
         }
       ],
-      "direccionEntrega": "Calle 123 #45-67"
+      "nombreDelPedido": "pedido ultimo",
+      "emailDelPedido": "luiscamilorossiibarra@gmail.com",
+      "telefonoDelPedido": "3505558208"
     },
     {
-      "id": "102",
-      "clienteId": "03cc",
-      "fecha": "2024-05-16T10:15:00Z",
-      "estado": "en_proceso",
-      "total": 24000,
-      "metodoPago": "efectivo",
-      "items": [
-        {
-          "productoId": 2,
-          "cantidad": 2,
-          "precioUnitario": 12000
-        }
-      ],
-      "direccionEntrega": "Av. Principal #22-33"
-    },
-    {
-      "id": "103",
-      "clienteId": "02cc",
-      "fecha": "2024-05-16T10:15:00Z",
-      "estado": "en_proceso",
-      "total": 12000,
-      "metodoPago": "efectivo",
-      "items": [
-        {
-          "productoId": 3,
-          "cantidad": 1,
-          "precioUnitario": 12000
-        }
-      ],
-      "direccionEntrega": "Av. nose #22-33"
-    },
-    {
-      "id": "b27e",
-      "clienteId": "01cc",
-      "fecha": "2025-05-29T04:00:35.403Z",
+      "id": "b6c9",
+      "clienteId": "b5bd",
+      "registrado": true,
+      "fecha": "2025-06-01T00:14:51.354Z",
       "estado": "pendiente",
       "total": 30000,
       "metodoPago": "efectivo",
-      "direccionEntrega": "sss",
+      "direccionEntrega": "92",
       "items": [
         {
           "productoId": "2",
           "cantidad": 2,
           "precioUnitario": 15000
         }
-      ]
+      ],
+      "nombreDelPedido": "ff",
+      "emailDelPedido": "luiscamilorossiibarra@gmail.com",
+      "telefonoDelPedido": "3505558208"
     },
     {
-      "id": "4fda",
-      "clienteId": "01cc",
-      "fecha": "2025-05-29T04:13:10.758Z",
+      "id": "3c48",
+      "clienteId": null,
+      "registrado": false,
+      "fecha": "2025-06-01T00:15:27.816Z",
       "estado": "pendiente",
-      "total": 12000,
+      "total": 24000,
       "metodoPago": "efectivo",
-      "direccionEntrega": "gfgfd",
+      "direccionEntrega": "92",
       "items": [
         {
           "productoId": "3",
-          "cantidad": 1,
+          "cantidad": 2,
           "precioUnitario": 12000
         }
-      ]
+      ],
+      "nombreDelPedido": "juan",
+      "emailDelPedido": "luiscamilorossiibarra@gmail.com",
+      "telefonoDelPedido": "3505558208"
     }
   ]
 }

@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaShoppingCart } from "react-icons/fa";
-import { alertaConfirmacion, alertaError } from "../../helpers/funciones";
-import FormularioPedido from "./FormularioPedido";
+import {
+  alertaConfirmacion,
+  alertaError,
+  generarToken,
+} from "../../helpers/funciones";
+import FormularioPedido from "./formularioPedido/FormularioPedido";
+import RegistroInvitado from "./formularioPedido/registroInvitado/RegistroInvitado";
 import "./carrito.css";
 
 let apiProductos = "http://localhost:3001/productos";
@@ -19,6 +24,11 @@ export default function Carrito() {
 
   //Para abrir el formulario del pedido
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  //Registro clientes despues de hacer un pedido
+  const [modalRegistroOpen, setModalRegistroOpen] = useState(false);
+  const [datosInvitado, setDatosInvitado] = useState({});
+  const [ultimoPedidoId, setUltimoPedidoId] = useState(null);
 
   // Cargar productos desde API
   useEffect(() => {
@@ -155,10 +165,17 @@ export default function Carrito() {
               precioUnitario: item.precio,
             }));
 
+            //Crea el pedido
             let pedido;
-            if (usuarioSesion) {
+            if (
+              usuarioSesion &&
+              typeof usuarioSesion === "object" &&
+              usuarioSesion.id
+            ) {
+              // Usuarios registrados
               pedido = {
                 clienteId: usuarioSesion.id,
+                registrado: true,
                 fecha: new Date().toISOString(),
                 estado: "pendiente",
                 total: productos.reduce(
@@ -170,8 +187,10 @@ export default function Carrito() {
                 items: productos,
               };
             } else {
+              // Usuarios invitados
               pedido = {
-                clienteId: "usuari no registrado",
+                clienteId: null,
+                registrado: false,
                 fecha: new Date().toISOString(),
                 estado: "pendiente",
                 total: productos.reduce(
@@ -181,9 +200,13 @@ export default function Carrito() {
                 metodoPago: datos.metodoPago,
                 direccionEntrega: datos.direccion,
                 items: productos,
+                nombreDelPedido: datos.nombre,
+                emailDelPedido: datos.email,
+                telefonoDelPedido: datos.telefono,
               };
             }
 
+            //Guarda el pedido
             fetch("http://localhost:3001/pedidos", {
               method: "POST",
               headers: {
@@ -198,7 +221,7 @@ export default function Carrito() {
               .then((data) => {
                 console.log("Pedido registrado:", data);
                 localStorage.removeItem("carrito");
-                // ✅ Actualizar historialPedidos del cliente dentro del then
+                // ✅ Actualiza el historialPedidos para que le aparezca al cliente en su home
                 if (usuarioSesion?.id) {
                   const nuevosPedidos = [
                     ...(usuarioSesion.historialPedidos || []),
@@ -236,11 +259,13 @@ export default function Carrito() {
                       console.error("Error actualizando cliente:", error);
                     });
                 } else {
-                  alertaError(
-                    "Error al realizar el pedido"
-                  ).then(() => {
-                    navigate("/productos");
+                  setDatosInvitado({
+                    nombre: datos.nombre,
+                    email: datos.email,
+                    telefono: datos.telefono,
                   });
+                  setUltimoPedidoId(data.id); // 👈 Guarda el ID del pedido
+                  setModalRegistroOpen(true); // Abre modal para ofrecer registro
                 }
               })
               .catch((error) => {
@@ -248,6 +273,87 @@ export default function Carrito() {
               });
 
             console.log("Datos del pedido:", datos);
+          }}
+        />
+        <RegistroInvitado
+          isOpen={modalRegistroOpen}
+          datos={datosInvitado}
+          onClose={() => {
+            alertaConfirmacion(
+              "Pedido realizado",
+              "Gracias por tu pedido. Te mantendremos al tanto por WhatsApp o Gmail."
+            );
+            setModalRegistroOpen(false);
+            navigate("/productos");
+          }}
+          onRegister={(nuevoUsuario) => {
+            fetch("http://localhost:3001/clientes", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                ...nuevoUsuario,
+                historialPedidos: ultimoPedidoId ? [ultimoPedidoId] : [], // ✅ Asocia el pedido
+              }),
+            })
+              .then((res) => {
+                if (!res.ok) throw new Error("Error al registrar usuario");
+                return res.json();
+              })
+              .then((usuarioRegistrado) => {
+                // 1. Obtener el pedido actual
+                fetch(`http://localhost:3001/pedidos/${ultimoPedidoId}`)
+                  .then((response) => response.json())
+                  .then((pedidoExistente) => {
+                    // 2. Actualizar solo el campo deseado
+                    const pedidoActualizado = {
+                      ...pedidoExistente, // Conserva todos los campos originales
+                      clienteId: usuarioRegistrado.id,
+                      registrado: true, // Sobrescribe este campo
+                    };
+
+                    // 3. Enviar la actualización
+                    return fetch(
+                      `http://localhost:3001/pedidos/${ultimoPedidoId}`,
+                      {
+                        method: "PUT",
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(pedidoActualizado),
+                      }
+                    );
+                  })
+                  .then((response) => {
+                    if (!response.ok) throw new Error("Error al actualizar");
+                    return response.json();
+                  })
+                  .then((data) => {
+                    console.log("Pedido actualizado:", data);
+                  })
+                  .catch((error) => {
+                    console.error("Error:", error);
+                  });
+
+                console.log(usuarioRegistrado);
+                let tokenAcceso = generarToken();
+                localStorage.setItem("token", tokenAcceso);
+                localStorage.setItem(
+                  "usuario",
+                  JSON.stringify(usuarioRegistrado)
+                );
+                alertaConfirmacion(
+                  "¡Registro exitoso!",
+                  "Ahora puedes consultar tus pedidos desde tu cuenta."
+                ).then(() => {
+                  navigate("/productos");
+                });
+              })
+              .catch((err) => {
+                console.error("Error al registrar usuario:", err);
+                alertaError("Hubo un problema al registrar el usuario");
+              });
           }}
         />
       </div>

@@ -1,8 +1,8 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { alertaRedireccion, alertaError } from "../../helpers/funciones";
-import "../login/loginYRegistro.css";
+import { alertaRedireccion, alertaError } from "../../../helpers/funciones";
+import "../loginYRegistro.css";
 let apiClientes = "http://localhost:3001/clientes";
 
 export default function Registrarse() {
@@ -35,7 +35,6 @@ export default function Registrarse() {
       email: email,
       password: password,
       telefono: "",
-      favoritos: [],
       historialPedidos: [],
     };
     fetch(apiClientes, {
