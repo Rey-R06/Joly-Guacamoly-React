@@ -4,7 +4,7 @@ import CardProductos from "../../components/card_Producto/CardProductos";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import "./productos.css";
-let apiProductos = "http://localhost:3001/productos";
+let apiProductos = "https://683fac3a5b39a8039a5546ae.mockapi.io/productos";
 
 function Productos() {
   const [productos, setProductos] = useState([]);

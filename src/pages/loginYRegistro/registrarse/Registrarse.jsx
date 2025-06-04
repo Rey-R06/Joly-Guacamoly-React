@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { alertaRedireccion, alertaError } from "../../../helpers/funciones";
 import "../loginYRegistro.css";
-let apiClientes = "http://localhost:3001/clientes";
+let apiClientes = "https://683fac3a5b39a8039a5546ae.mockapi.io/clientes";
 
 export default function Registrarse() {
-  const [clientes, setClientes] = useState([])
+  const [clientes, setClientes] = useState([]);
   const [nombre, setNombre] = useState("");
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
@@ -24,38 +24,54 @@ export default function Registrarse() {
   }, []);
 
   function registrarCliente() {
-  let emailYaRegistrado = clientes.some(cliente => cliente.email === email);
-  
-  if (emailYaRegistrado) {
-    return alertaError("Email ya registrado, pruebe con otro.");
-  }
+    let emailYaRegistrado = clientes.some((cliente) => cliente.email === email);
+
+    if (emailYaRegistrado) {
+      return alertaError("Email ya registrado, pruebe con otro.");
+    }
+
     let nuevoCliente = {
       nombre: nombre,
-      user: user,
+      user: user, // Asegúrate que este campo existe en MockAPI
       email: email,
       password: password,
       telefono: "",
       historialPedidos: [],
+      createdAt: new Date().toISOString(), // Campo útil para ordenar
     };
+
     fetch(apiClientes, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json", // ¡Este header es crucial!
+      },
       body: JSON.stringify(nuevoCliente),
     })
+      .then((res) => {
+        if (!res.ok) throw new Error(res.statusText);
+        return res.json();
+      })
       .then(() => {
         alertaRedireccion(
           navigate,
-          "Te has registrado correctamente",
-          "Ahora inicia sesion....",
+          "Registro exitoso",
+          "Ahora inicia sesión...",
           "success",
           "/login"
         );
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.error("Error:", error);
+        alertaError("Error al registrar. Intenta nuevamente.");
+      });
   }
   return (
     <>
       <main className="contenedor-form">
-        <FaArrowLeft onClick={() => navigate("/")} className="flecha-regresar" />
+        <FaArrowLeft
+          onClick={() => navigate("/")}
+          className="flecha-regresar"
+        />
         <form className="form">
           <span className="title">Registrarse</span>
           <label htmlFor="username" className="label">

@@ -54,8 +54,10 @@
       "historialPedidos": [
         "b27e",
         "4fda",
-        "0659"
-      ]
+        "0659",
+        "4ded"
+      ],
+      "direccion": "pre"
     },
     {
       "id": "83cc",
@@ -229,6 +231,23 @@
       "nombreDelPedido": "juan",
       "emailDelPedido": "luiscamilorossiibarra@gmail.com",
       "telefonoDelPedido": "3505558208"
+    },
+    {
+      "id": "4ded",
+      "clienteId": "01cc",
+      "registrado": true,
+      "fecha": "2025-06-01T22:55:08.631Z",
+      "estado": "pendiente",
+      "total": 45000,
+      "metodoPago": "efectivo",
+      "direccionEntrega": "pre",
+      "items": [
+        {
+          "productoId": "2",
+          "cantidad": 3,
+          "precioUnitario": 15000
+        }
+      ]
     }
   ]
 }

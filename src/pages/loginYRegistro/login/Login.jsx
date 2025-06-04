@@ -7,8 +7,8 @@ import {
   generarToken,
 } from "../../../helpers/funciones";
 import "../loginYRegistro.css";
-let apiAdmins = "http://localhost:3001/admins";
-let apiClientes = "http://localhost:3001/clientes";
+let apiAdmins = "https://683fbfa85b39a8039a558922.mockapi.io/admins";
+let apiClientes = "https://683fac3a5b39a8039a5546ae.mockapi.io/clientes";
 
 export default function Login() {
   const [admins, setAdmins] = useState([]);

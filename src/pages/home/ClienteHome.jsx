@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./clienteHome.css";
 
-let apiPedidos = "http://localhost:3001/pedidos";
-let apiProductos = "http://localhost:3001/productos";
+let apiPedidos = "https://683fbfa85b39a8039a558922.mockapi.io/pedidos";
+let apiProductos = "https://683fac3a5b39a8039a5546ae.mockapi.io/productos";
 
 export default function ClienteHome() {
   const [usuarioSesion] = useState(() => {
