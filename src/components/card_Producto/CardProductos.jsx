@@ -14,7 +14,7 @@ export default function CardProductos({ producto }) {
   return (
     <article className="card-producto">
       <div className="producto-img-container">
-        <img src={producto.imagen} alt={producto.nombre} loading="lazy" />
+        <img src={producto.urlImg} alt={producto.nombre} loading="lazy" />
         {producto.oferta && <span className="badge-oferta">OFERTA</span>}
       </div>
       <div className="producto-info">

@@ -7,52 +7,35 @@ import {
   generarToken,
 } from "../../../helpers/funciones";
 import "../loginYRegistro.css";
-let apiAdmins = "https://683fbfa85b39a8039a558922.mockapi.io/admins";
-let apiClientes = "https://683fac3a5b39a8039a5546ae.mockapi.io/clientes";
+let apiUsuarios = "http://localhost:8080/usuarios"
 
 export default function Login() {
-  const [admins, setAdmins] = useState([]);
-  const [clientes, setClientes] = useState([]);
+  const [usuarios, setUsuario] = useState([]);
   const [user, setUser] = useState("");
   const [contraseña, setContraseña] = useState("");
   let navigate = useNavigate();
 
-  function getAdmins() {
-    fetch(apiAdmins)
+  function getUsuarios() {
+    fetch(apiUsuarios)
       .then((response) => response.json())
-      .then((data) => setAdmins(data))
+      .then((data) => setUsuario(data))
       .catch((error) => console.log(error));
   }
   useEffect(() => {
-    getAdmins();
+    getUsuarios();
   }, []);
 
-  function getClientes() {
-    fetch(apiClientes)
-      .then((response) => response.json())
-      .then((data) => setClientes(data))
-      .catch((error) => console.log(error));
-  }
-  useEffect(() => {
-    getClientes();
-  }, []);
 
   function buscarUsuario() {
-    let clienteEncontrado = clientes.find(
-      (cliente) => user == cliente.user && contraseña == cliente.password
+    let usuario = usuarios.find(
+      (cliente) => user == cliente.nombre && contraseña == cliente.contraseña
     );
 
-    let adminEncontrado = admins.find(
-      (admin) => user == admin.user && contraseña == admin.password
-    );
-
-    if (adminEncontrado) {
-      return { usuario: adminEncontrado, ruta: "/admin-home" };
-    } else if (clienteEncontrado) {
-      return { usuario: clienteEncontrado, ruta: "/cliente-home" };
+    if (usuario.rol != "Cliente") {
+      return { usuario: usuario, ruta: "/admin-home" };
     } else {
-      return null;
-    }
+      return { usuario: usuario, ruta: "/cliente-home" };
+    } 
   }
 
   function inicioSesion() {

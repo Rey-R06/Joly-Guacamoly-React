@@ -63,9 +63,9 @@ export default function Header() {
       </section>
       <section className="botones-login">
         {usuarioSesion ? (
-          <Link className="usuario-sesion" to={usuarioSesion.rol ? "/admin-home" : "/cliente-home"}>
+          <Link className="usuario-sesion" to={usuarioSesion.rol != "Cliente" ? "/admin-home" : "/cliente-home"}>
             <FaUserCircle size={50} color="#773611ff" />
-            <span>{usuarioSesion.user}</span>
+            <span>{usuarioSesion.nombre}</span>
           </Link>
         ) : (
           <>

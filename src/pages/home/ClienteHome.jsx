@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./clienteHome.css";
 
-let apiPedidos = "https://683fbfa85b39a8039a558922.mockapi.io/pedidos";
-let apiProductos = "https://683fac3a5b39a8039a5546ae.mockapi.io/productos";
+let apiPedidos = "http://localhost:8080/pedidos";
+let apiProductos = "http://localhost:8080/productos";
 
 export default function ClienteHome() {
   const [usuarioSesion] = useState(() => {
@@ -24,6 +24,8 @@ export default function ClienteHome() {
       .catch((err) => console.log(err));
   }, []);
 
+  console.log(pedidosDb);
+
   useEffect(() => {
     fetch(apiProductos)
       .then((res) => res.json())
@@ -32,22 +34,24 @@ export default function ClienteHome() {
   }, []);
 
   useEffect(() => {
-    if (usuarioSesion?.historialPedidos?.length && idPedidos.length === 0) {
-      setIdPedidos(usuarioSesion.historialPedidos);
-    }
-  }, [usuarioSesion, idPedidos.length]);
-
-  useEffect(() => {
   if (usuarioSesion && pedidosDb.length > 0) {
     const pedidosIds = usuarioSesion.historialPedidos?.map((id) => id.toString()) || [];
     setIdPedidos(pedidosIds);
 
+    console.log("Historial pedidos:", pedidosIds);
+    console.log("Pedidos DB:", pedidosDb.map(p => p.id.toString()));
+
     const filtrados = pedidosDb.filter((pedido) =>
       pedidosIds.includes(pedido.id.toString())
     );
+
+    console.log("Pedidos filtrados:", filtrados);
+
     setPedidosUsuario(filtrados);
   }
 }, [usuarioSesion, pedidosDb]);
+
+  console.log("pedidos",pedidosUsuario)
 
   return (
     <>
@@ -55,11 +59,10 @@ export default function ClienteHome() {
       <section className="panel-cliente">
         <ul className="opciones-cliente">
           <li className="opcion-cliente">
-            <Link>Mis pedidos - {usuarioSesion.nombre}</Link>
+            <Link to="#">Mis pedidos - {usuarioSesion.nombre}</Link>
           </li>
         </ul>
         <section className="pedidos-clientes">
-          {console.log(pedidosUsuario)}
           {pedidosUsuario.map((pedido) => (
             <PedidoCard key={pedido.id} pedido={pedido} productosDb={productosDb} />
           ))}

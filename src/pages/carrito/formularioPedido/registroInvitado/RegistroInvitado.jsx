@@ -7,8 +7,7 @@ export default function RegistroInvitado({
   onClose,
   onRegister,
 }) {
-  const [user, setUser] = useState("");
-  const [password, setPassword] = useState("");
+  const [contraseña, setContraseña] = useState("");
 
   if (!isOpen) return null;
 
@@ -29,24 +28,16 @@ export default function RegistroInvitado({
               nombre: datos.nombre,
               email: datos.email,
               telefono: datos.telefono,
-              user,
-              password,
+              direccionEntrega: datos.direccionEntrega,
+              contraseña,
             });
           }}
         >
-          <label>Nombre de usuario:</label>
-          <input
-            type="text"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
-            required
-          />
-
           <label>Contraseña:</label>
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={contraseña}
+            onChange={(e) => setContraseña(e.target.value)}
             required
           />
 

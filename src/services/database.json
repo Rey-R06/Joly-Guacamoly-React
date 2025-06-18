@@ -140,8 +140,7 @@
       "imagen": "/img/productos/natural.png",
       "categoria": "Guacamoles",
       "oferta": true,
-      "stock": 50,
-      "rating": 4.8
+      "stock": 50
     },
     {
       "id": "2",
@@ -152,8 +151,7 @@
       "imagen": "/img/productos/picante.png",
       "categoria": "Guacamoles",
       "oferta": true,
-      "stock": 20,
-      "rating": 4.9
+      "stock": 20
     },
     {
       "id": "3",
@@ -163,8 +161,7 @@
       "imagen": "/img/productos/humus.png",
       "categoria": "Hummus",
       "oferta": false,
-      "stock": 35,
-      "rating": 4.5
+      "stock": 35
     }
   ],
   "pedidos": [
