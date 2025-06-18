@@ -3,51 +3,70 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { alertaRedireccion, alertaError } from "../../../helpers/funciones";
 import "../loginYRegistro.css";
-let apiClientes = "https://683fac3a5b39a8039a5546ae.mockapi.io/clientes";
+let apiUsuarios = "http://localhost:8080/usuarios";
 
 export default function Registrarse() {
   const [clientes, setClientes] = useState([]);
   const [nombre, setNombre] = useState("");
-  const [user, setUser] = useState("");
+  const [telefono, setTelefono] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  function getClientes() {
-    fetch(apiClientes)
+  function getUsuaios() {
+    fetch(apiUsuarios)
       .then((response) => response.json())
       .then((data) => setClientes(data))
       .catch((error) => console.log(error));
   }
   useEffect(() => {
-    getClientes();
+    getUsuaios();
   }, []);
 
   function registrarCliente() {
-    let emailYaRegistrado = clientes.some((cliente) => cliente.email === email);
+    // Validación: campos obligatorios
+    if (!nombre || !email || !telefono || !password) {
+      return alertaError("Por favor complete todos los campos.");
+    }
 
+    // Validación de email repetido
+    let emailYaRegistrado = clientes.some((cliente) => cliente.email === email);
     if (emailYaRegistrado) {
       return alertaError("Email ya registrado, pruebe con otro.");
     }
 
+    // Validación de teléfono
+    const telefonoRegex = /^\d{7,15}$/;
+    if (!telefonoRegex.test(telefono)) {
+      return alertaError(
+        "El teléfono debe contener solo números y tener entre 7 y 15 dígitos."
+      );
+    }
+
+    const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    if (!gmailRegex.test(email)) {
+      return alertaError("Solo se permiten correos de Gmail válidos.");
+    }
+
     let nuevoCliente = {
       nombre: nombre,
-      user: user, // Asegúrate que este campo existe en MockAPI
+      rol: "Cliente",
       email: email,
-      password: password,
-      telefono: "",
+      contraseña: password,
+      telefono: telefono,
+      registrado: true,
       historialPedidos: [],
-      createdAt: new Date().toISOString(), // Campo útil para ordenar
     };
 
-    fetch(apiClientes, {
+    fetch(apiUsuarios, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // ¡Este header es crucial!
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(nuevoCliente),
     })
       .then((res) => {
+        console.log("Respuesta completa:", res);
         if (!res.ok) throw new Error(res.statusText);
         return res.json();
       })
@@ -65,6 +84,7 @@ export default function Registrarse() {
         alertaError("Error al registrar. Intenta nuevamente.");
       });
   }
+
   return (
     <>
       <main className="contenedor-form">
@@ -96,25 +116,21 @@ export default function Registrarse() {
             required
             className="input"
           />
+          <label className="label">Teléfono</label>
+          <input
+            className="input"
+            id="telefono"
+            name="telefono"
+            type="tel"
+            onChange={(e) => setTelefono(e.target.value)}
+          />
+
           <label htmlFor="password" className="label">
             Contraseña
           </label>
           <input
             onChange={(e) => setPassword(e.target.value)}
             type="password"
-            id="password"
-            name="password"
-            required
-            className="input"
-          />
-          <label htmlFor="password" className="label">
-            Nombre usuario
-          </label>
-          <input
-            onChange={(e) => setUser(e.target.value)}
-            type="text"
-            id="usuario"
-            name="usuario"
             required
             className="input"
           />
