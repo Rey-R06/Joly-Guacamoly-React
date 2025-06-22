@@ -7,7 +7,7 @@ import {
   generarToken,
 } from "../../../helpers/funciones";
 import "../loginYRegistro.css";
-let apiUsuarios = "http://localhost:8080/usuarios"
+let apiUsuarios = "http://localhost:8080/usuarios";
 
 export default function Login() {
   const [usuarios, setUsuario] = useState([]);
@@ -25,30 +25,35 @@ export default function Login() {
     getUsuarios();
   }, []);
 
-
   function buscarUsuario() {
     let usuario = usuarios.find(
-      (cliente) => user == cliente.nombre && contraseña == cliente.contraseña
+      (usuario) => user === usuario.nombre && contraseña === usuario.contraseña
     );
 
-    if (usuario.rol != "Cliente") {
+    console.log("Usuario encontrado:", usuario);
+
+    if (!usuario) return null;
+
+    if (usuario.rol !== "Cliente") {
       return { usuario: usuario, ruta: "/admin-home" };
     } else {
       return { usuario: usuario, ruta: "/cliente-home" };
-    } 
+    }
   }
 
   function inicioSesion() {
-    if (buscarUsuario()) {
+    const resultado = buscarUsuario();
+
+    if (resultado && resultado.usuario) {
       let tokenAcceso = generarToken();
       localStorage.setItem("token", tokenAcceso);
-      localStorage.setItem("usuario", JSON.stringify(buscarUsuario().usuario));
+      localStorage.setItem("usuario", JSON.stringify(resultado.usuario));
       alertaRedireccion(
         navigate,
-        "Bienvenido " + buscarUsuario().usuario.nombre,
+        "Bienvenido " + resultado.usuario.nombre,
         "En breves segundos será redireccionado al Home",
         "success",
-        buscarUsuario().ruta
+        resultado.ruta
       );
     } else {
       alertaError("Usuario y/o contraseña incorrecta");
@@ -58,7 +63,10 @@ export default function Login() {
   return (
     <>
       <main className="contenedor-form">
-        <FaArrowLeft onClick={() => navigate("/")} className="flecha-regresar" />
+        <FaArrowLeft
+          onClick={() => navigate("/")}
+          className="flecha-regresar"
+        />
         <form className="form">
           <span className="title">Inicio sesión</span>
           <label htmlFor="username" className="label">

@@ -1,60 +1,47 @@
-ul {
-  padding-left: 0;
-  margin: 0;
+.admin-panel {
+  padding: 2rem;
+  background-color: #f5f7fa;
 }
 
-.admin-home {
-  background-color: #f8fbe9;
-  min-height: 100vh;
-}
-
-.admin-panel{
-  margin: 10px 0;
-}
-
-.admin-panel h2{
-  font-size: 2.5rem;
+.admin-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
   color: var(--cafe-color);
-  margin: 20px 30px;
 }
 
-.admin-cards a{
-  text-decoration: none;
-}
-
-.admin-cards li{
-  list-style: none;
-}
-
-.admin-cards {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
+.admin-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
 }
 
 .admin-card {
-  min-width: 250px;
-  background-color: white;
-  padding: 20px 30px;
-  border-radius: 12px;
-  text-align: center;
-  font-weight: bold;
-  color: var(--verde-color);
+  display: block;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: var(--cafe-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
   border: 2px solid var(--verde-color);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  cursor: pointer;
-  transition: transform 0.3s ease;
 }
 
 .admin-card:hover {
-  transform: scale(1.05);
-  background-color: #f1fddc;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Responsive */
-@media (max-width: 460px) {
-  .admin-cards{
-    gap: 10px;
-  }
+.admin-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: var(--cafe-color);
+  font-weight: 700;
+}
+
+.admin-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #555;
+  font-weight: 700;
 }

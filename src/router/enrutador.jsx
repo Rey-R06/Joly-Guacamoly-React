@@ -44,7 +44,7 @@ export let enrutador = [
     },
     {
         path: '/admin-home/',
-        element: <RutaProtegida proteger = {<AdminHome />}/>,
+        element: <RutaProtegida proteger = {<AdminHome />} rolRequerido="Admin"/>,
     children: [
       {
         path: "gestion-productos",
@@ -66,7 +66,7 @@ export let enrutador = [
     },,
     {
         path: '/cliente-home/',
-        element: <RutaProtegida proteger = {<ClienteHome />}/>,
+        element: <RutaProtegida proteger = {<ClienteHome />} rolRequerido="Cliente"/>,
     children: [],
     },
 ]
