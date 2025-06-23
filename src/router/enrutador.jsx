@@ -9,8 +9,8 @@ import Recetas from "../pages/recetas/Recetas"
 import AdminHome from "../pages/home/AdminHome"
 import ClienteHome from "../pages/home/ClienteHome"
 import GestionProductos from "../pages/gestionAdmin/gestionProductos/GestionProductos"
-import GestionAdmins from "../pages/gestionAdmin/gestionAdmins/GestionAdmins"
-import GestionClientes from "../pages/gestionAdmin/gestionClientes/GestionClientes"
+import GestionAdmins from "../pages/gestionAdmin/gestionUsarios/gestionAdmins/GestionAdmins"
+import GestionClientes from "../pages/gestionAdmin/gestionUsarios/gestionClientes/GestionClientes"
 import GestionPedidos from "../pages/gestionAdmin/gestionPedidos/GestionPedidos"
 
 export let enrutador = [

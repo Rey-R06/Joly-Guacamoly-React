@@ -1,0 +1,90 @@
+/* Estilo para la barra de búsqueda */
+.barra-busqueda-pedidos {
+  margin: 50px 0 0 0;
+  display: flex;
+  justify-content: center;
+}
+
+.barra-busqueda-pedidos input {
+  width: 100%;
+  height: 80px;
+  max-width: 400px;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.barra-busqueda-pedidos input:focus {
+  outline: none;
+  box-shadow: 0 0 5px var(--verde-color);
+  border-color: var(--verde-color);
+}
+
+/* Lista de pedidos como grid */
+.lista-pedidos-admin {
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor-pedidos{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* Card de pedido */
+.card-pedido-admin {
+  width: 400px;
+  min-width: 250px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-pedido-admin:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.card-pedido-admin h3 {
+  font-size: 1.2rem;
+  color: var(--cafe-color);
+  font-weight: 600;
+}
+
+.card-pedido-admin p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.estado-pedido {
+  font-weight: bold;
+  color: var(--verde-color);
+}
+
+/* Botón editar estado */
+.btn-editar-estado {
+  margin-top: auto;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--verde-color);
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-editar-estado:hover {
+  background-color: var(--hover-color);
+}

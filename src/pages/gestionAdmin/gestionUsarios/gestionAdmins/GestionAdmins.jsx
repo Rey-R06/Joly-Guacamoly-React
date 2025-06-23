@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 let apiUsuarios = "http://localhost:8080/usuarios";
-import "./GestionClientes.css";
+import "../adminsYClientes.css";
 
-export default function GestionClientes() {
+export default function GestionAdmins() {
   const [usuarios, setUsuarios] = useState([]);
   const [busqueda, setBusqueda] = useState("");
 
@@ -10,18 +10,17 @@ export default function GestionClientes() {
     fetch(apiUsuarios)
       .then((res) => res.json())
       .then((data) => {
-        const clientes = data.filter((usuario) => usuario.rol === "Cliente");
-        setUsuarios(clientes);
+        const admins = data.filter((usuario) => usuario.rol === "Admin");
+        setUsuarios(admins);
       })
       .catch((err) => console.error("Error al cargar usuarios:", err));
   }, []);
 
-  const clientesFiltrados = usuarios.filter(
-    (cliente) =>
-      cliente.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-      cliente.email.toLowerCase().includes(busqueda.toLowerCase())
+  const adminFiltrados = usuarios.filter(
+    (admin) =>
+      admin.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+      admin.email.toLowerCase().includes(busqueda.toLowerCase())
   );
-
   return (
     <section className="lista-clientes-admin">
       {/* Barra de búsqueda */}
@@ -35,7 +34,7 @@ export default function GestionClientes() {
       </div>
       {/* Lista de clientes */}
       <section className="contenedor-card">
-        {clientesFiltrados.map((cliente) => (
+        {adminFiltrados.map((cliente) => (
           <article key={cliente.id} className="card-cliente-admin">
             <h3 className="nombre-cliente">{cliente.nombre}</h3>
             <p className="email-cliente">{cliente.email}</p>
@@ -44,9 +43,9 @@ export default function GestionClientes() {
         ))}
       </section>
 
-      {clientesFiltrados.length === 0 && (
+      {adminFiltrados.length === 0 && (
         <p className="no-resultados">No se encontraron resultados.</p>
       )}
     </section>
-  );
+  )
 }
