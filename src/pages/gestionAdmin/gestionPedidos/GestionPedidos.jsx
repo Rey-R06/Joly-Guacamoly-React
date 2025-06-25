@@ -40,6 +40,7 @@ export default function GestionPedidos() {
               Dirección: {pedido.direccionEntrega}
             </p>
             <p>Cliente: {pedido.nombreDelPedido}</p>
+            <p>Email: {pedido.emailDelPedido}</p>
             <p>Teléfono: {pedido.telefonoDelPedido}</p>
             <p className="estado-pedido">Estado: {pedido.estado}</p>
 
