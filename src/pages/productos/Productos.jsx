@@ -26,6 +26,9 @@ function Productos() {
     categoriaActiva === "Todos"
       ? productos
       : productos.filter((p) => p.categoria === categoriaActiva);
+
+  const productosActivos = productosFiltrados.filter((p) => p.activo === true);
+
   return (
     <>
       <Header />
@@ -52,7 +55,7 @@ function Productos() {
         </div>
 
         <section className="grid-productos">
-          {productosFiltrados.map((producto) => (
+          {productosActivos.map((producto) => (
             <CardProductos key={producto.id} producto={producto} />
           ))}
         </section>

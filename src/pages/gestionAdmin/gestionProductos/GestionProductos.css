@@ -94,12 +94,16 @@
   background-color: #9da316;
 }
 
-.btn-eliminar {
+.btn-activar-desactivar {
   background-color: var(--cafe-color);
   color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
 }
 
-.btn-eliminar:hover {
+.btn-activar-desactivar:hover {
   background-color: var(--hover-color);
 }
 
@@ -124,6 +128,13 @@
 .btn-agregar-producto:hover {
   background-color: #9da316;
 }
+
+.producto-desactivado .producto-info-con-img {
+  opacity: 0.5;
+  filter: grayscale(70%);
+}
+
+
 
 /* --- RESPONSIVE BREAKPOINTS --- */
 @media (max-width: 768px) {

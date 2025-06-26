@@ -12,7 +12,7 @@ export default function CardProductos({ producto }) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }
   return (
-    <article className="card-producto">
+    <article  className="card-producto">
       <div className="producto-img-container">
         <img src={producto.urlImg} alt={producto.nombre} loading="lazy" />
         {producto.oferta && <span className="badge-oferta">OFERTA</span>}
@@ -21,7 +21,7 @@ export default function CardProductos({ producto }) {
         <h3>{producto.nombre}</h3>
         <p className="producto-desc">{producto.descripcion}</p>
         <div className="producto-precio">
-          {producto.precioOriginal && (
+          {producto.oferta && (
             <span className="precio-original">
               ${producto.precioOriginal.toLocaleString()}
             </span>

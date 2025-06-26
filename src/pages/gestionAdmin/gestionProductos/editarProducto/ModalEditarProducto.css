@@ -1,0 +1,108 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-editar {
+  background-color: #fff;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal-editar h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  color: var(--cafe-color);
+  text-align: center;
+}
+
+.modal-editar input,
+.modal-editar textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--cafe-color);
+  border-radius: 8px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.modal-editar textarea {
+  min-height: 80px;
+}
+
+.acciones-modal {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.acciones-modal button {
+  flex: 1;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón de guardar */
+.acciones-modal button[type="submit"] {
+  background-color: var(--verde-color);
+  color: white;
+}
+
+.acciones-modal button[type="submit"]:hover {
+  background-color: var(--hover-color);
+}
+
+/* Botón de cancelar */
+.acciones-modal button[type="button"] {
+  background-color: var(--cafe-color);
+  color: white;
+}
+
+.acciones-modal button[type="button"]:hover {
+  background-color: var(--hover-color);
+}
+
+.checkbox-oferta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+  font-weight: 500;
+  color: var(--cafe-color);
+}
+
+.checkbox-oferta input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--verde-color);
+  cursor: pointer;
+}
+
+.checkbox-oferta label {
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.checkbox-oferta:hover label {
+  color: var(--hover-color);
+}
