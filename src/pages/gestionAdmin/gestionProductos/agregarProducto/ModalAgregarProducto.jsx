@@ -16,12 +16,13 @@ export default function ModalAgregarProducto({ isOpen, onClose, onProductoAgrega
   });
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setForm((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+  const { name, value } = e.target;
+  setForm((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -96,29 +97,6 @@ export default function ModalAgregarProducto({ isOpen, onClose, onProductoAgrega
             step="0.01"
             required
           />
-          <div className="form-agregar-checkbox">
-            <input
-              type="checkbox"
-              id="oferta"
-              name="oferta"
-              checked={form.oferta}
-              onChange={handleChange}
-            />
-            <label htmlFor="oferta">¿Tiene oferta?</label>
-          </div>
-          {form.oferta && (
-            <input
-              className="form-agregar-input"
-              type="number"
-              name="precio"
-              value={form.precio}
-              onChange={handleChange}
-              placeholder="Precio de Oferta"
-              min="0"
-              step="0.01"
-              required
-            />
-          )}
           <input
             className="form-agregar-input"
             name="urlImg"
