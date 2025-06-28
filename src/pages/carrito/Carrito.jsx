@@ -122,17 +122,25 @@ export default function Carrito() {
       });
 
       const data = await res.json();
-      console.log("Respuesta servidor:", data);
-      console.log("Respuesta servidor2:", pedido);
 
       if (!res.ok) throw new Error(data.mensaje || "Error al crear pedido");
 
-      const pedidoCreado = data;
+      const pedidoCreado = data; // ✅ pedido ya creado con ID
 
       if (usuarioSesion?.id) {
-        await actualizarHistorialUsuario(usuarioSesion.id, pedidoCreado.id);
+        // ✅ Ahora sí, actualizar historial después de tener el ID del pedido
+        await fetch(
+          `http://localhost:8080/usuarios/${usuarioSesion.id}/agregar-pedido`,
+          {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ pedidoId: pedidoCreado.id }),
+          }
+        );
 
-        // ✅ ACTUALIZAMOS EL LOCALSTORAGE TAMBIÉN
+        // ✅ Actualizar también localStorage
         usuarioSesion.historialPedidos = [
           ...(usuarioSesion.historialPedidos || []),
           pedidoCreado.id,
@@ -155,43 +163,12 @@ export default function Carrito() {
         setModalRegistroOpen(true);
       }
 
-      // 🛒 Limpiamos el carrito
-      localStorage.removeItem("carrito");
+      localStorage.removeItem("carrito"); // 🛒 limpiar carrito
     } catch (error) {
       console.error("Error:", error);
       alertaError("Error al procesar el pedido");
     } finally {
       setIsSendingPedido(false);
-    }
-  };
-
-  const actualizarHistorialUsuario = async (userId, pedidoId) => {
-    try {
-      const resGet = await fetch(`${apiUsuarios}/${userId}`);
-      if (!resGet.ok) throw new Error("No se pudo obtener el usuario");
-
-      const usuarioActual = await resGet.json();
-      const historialActualizado = [
-        ...(usuarioActual.historialPedidos || []),
-        pedidoId,
-      ];
-
-      const resPut = await fetch(`${apiUsuarios}/${userId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...usuarioActual,
-          historialPedidos: historialActualizado,
-        }),
-      });
-
-      if (!resPut.ok) throw new Error("Error al actualizar usuario");
-
-      const usuarioActualizado = await resPut.json();
-      localStorage.setItem("usuario", JSON.stringify(usuarioActualizado));
-    } catch (error) {
-      console.error("Error:", error);
-      throw error;
     }
   };
 
@@ -206,7 +183,7 @@ export default function Carrito() {
           ...nuevoUsuario,
           rol: "Cliente",
           historialPedidos: ultimoPedidoId ? [ultimoPedidoId] : [],
-          registrado: true
+          registrado: true,
         }),
       });
 

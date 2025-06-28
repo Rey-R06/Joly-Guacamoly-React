@@ -12,7 +12,6 @@ export default function ClienteHome() {
     return JSON.parse(localStorage.getItem("usuario")) || {};
   });
 
-  const [idPedidos, setIdPedidos] = useState([]);
   const [pedidosUsuario, setPedidosUsuario] = useState([]);
   const [pedidosDb, setPedidosDb] = useState([]);
   const [productosDb, setProductosDb] = useState([]);
@@ -24,7 +23,8 @@ export default function ClienteHome() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(pedidosDb);
+  console.log("----------------------------------------")
+  console.log("Pedidos DB:",pedidosDb);
 
   useEffect(() => {
     fetch(apiProductos)
@@ -36,8 +36,7 @@ export default function ClienteHome() {
   useEffect(() => {
   if (usuarioSesion && pedidosDb.length > 0) {
     const pedidosIds = usuarioSesion.historialPedidos?.map((id) => id.toString()) || [];
-    setIdPedidos(pedidosIds);
-
+    
     console.log("Historial pedidos:", pedidosIds);
     console.log("Pedidos DB:", pedidosDb.map(p => p.id.toString()));
 
