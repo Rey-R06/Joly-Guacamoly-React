@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { alertaRedireccion, alertaError } from "../../../helpers/funciones";
 import "../loginYRegistro.css";
-let apiUsuarios = "http://localhost:8080/usuarios";
+let apiUsuarios = "https://product-manager-api-production-79d2.up.railway.app/usuarios";
 
 export default function Registrarse() {
   const [clientes, setClientes] = useState([]);

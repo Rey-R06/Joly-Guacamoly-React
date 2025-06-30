@@ -10,9 +10,9 @@ import FormularioPedido from "./formularioPedido/FormularioPedido";
 import RegistroInvitado from "./formularioPedido/registroInvitado/RegistroInvitado";
 import "./carrito.css";
 
-const apiPedidos = "http://localhost:8080/pedidos";
-const apiUsuarios = "http://localhost:8080/usuarios";
-const apiProductos = "http://localhost:8080/productos";
+const apiPedidos = "https://product-manager-api-production-79d2.up.railway.app/pedidos";
+const apiUsuarios = "https://product-manager-api-production-79d2.up.railway.app/usuarios";
+const apiProductos = "https://product-manager-api-production-79d2.up.railway.app/productos";
 
 export default function Carrito() {
   const navigate = useNavigate();
@@ -130,7 +130,7 @@ export default function Carrito() {
       if (usuarioSesion?.id) {
         // ✅ Ahora sí, actualizar historial después de tener el ID del pedido
         await fetch(
-          `http://localhost:8080/usuarios/${usuarioSesion.id}/agregar-pedido`,
+          `${apiUsuarios}/${usuarioSesion.id}/agregar-pedido`,
           {
             method: "PATCH",
             headers: {

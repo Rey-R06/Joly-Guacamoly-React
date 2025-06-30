@@ -33,7 +33,7 @@ export default function ModalAgregarProducto({ isOpen, onClose, onProductoAgrega
     };
 
     try {
-      const res = await fetch("http://localhost:8080/productos", {
+      const res = await fetch("https://product-manager-api-production-79d2.up.railway.app/productos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(nuevoProducto),

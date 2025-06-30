@@ -3,7 +3,7 @@ import ModalEditarEstado from "./editarEstado.jsx/ModalEditarEstado";
 import { alertaConfirmacion, alertaError } from "../../../helpers/funciones";
 import "./GestionPedidos.css";
 
-let apiPedidos = "http://localhost:8080/pedidos";
+let apiPedidos = "https://product-manager-api-production-79d2.up.railway.app/pedidos";
 
 export default function GestionPedidos() {
   const [modalAbierto, setModalAbierto] = useState(false);
@@ -36,7 +36,7 @@ export default function GestionPedidos() {
 
     try {
       const res = await fetch(
-        `http://localhost:8080/pedidos/${pedido.id}/estado`,
+        `${apiPedidos}/${pedido.id}/estado`,
         {
           method: "PATCH",
           headers: {

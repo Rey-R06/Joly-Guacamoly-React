@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./clienteHome.css";
 
-let apiPedidos = "http://localhost:8080/pedidos";
-let apiProductos = "http://localhost:8080/productos";
+let apiPedidos = "https://product-manager-api-production-79d2.up.railway.app/pedidos";
+let apiProductos = "https://product-manager-api-production-79d2.up.railway.app/productos";
 
 export default function ClienteHome() {
   const [usuarioSesion] = useState(() => {

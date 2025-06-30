@@ -4,7 +4,7 @@ import ModalEditarProducto from "./editarProducto/ModalEditarProducto";
 import ModalAgregarProducto from "./agregarProducto/ModalAgregarProducto";
 import "./GestionProductos.css";
 
-const apiProductos = "http://localhost:8080/productos";
+const apiProductos = "https://product-manager-api-production-79d2.up.railway.app/productos";
 
 export default function GestionProductos() {
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
@@ -44,7 +44,7 @@ export default function GestionProductos() {
   const activarYDesactivarProducto = async (id, accion) => {
     try {
       const res = await fetch(
-        `http://localhost:8080/productos/${id}/${accion}`,
+        `${apiProductos}/${id}/${accion}`,
         {
           method: "PATCH",
         }
