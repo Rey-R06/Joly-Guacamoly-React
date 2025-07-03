@@ -1,62 +1,121 @@
-      Integrantes del proyecto 
+# 🛒 Product Manager API - Backend
 
+Este es el backend del sistema de gestión de pedidos para **JolyDips**, desarrollado con **Java + Spring Boot**, y conectado a una base de datos **MySQL**.
 
-Joly Guacamoly
-About the Project
-Joly Guacamoly is a vibrant React 19 single-page app built by a trio of developers: Luis Camilo Rossi Ibarra, Simon Valencia Lopez, and Sergio Andres Zapata Alvarez. With a fun, foodie vibe (think guacamole!), it delivers a dynamic, responsive user experience.
-Features
+---
 
-Smooth Navigation: Powered by React Router for seamless page transitions.
-Sleek UI: Built with React Bootstrap and Bootstrap 5 for a polished, mobile-friendly design.
-Dynamic Data: Uses JSON Server to simulate a backend for real-time data rendering.
-Interactive Alerts: Enhanced with SweetAlert2 for engaging user notifications.
-Fast Development: Leverages Vite for quick builds and ESLint for clean code.
+## 🚀 Tecnologías utilizadas
 
-Tech Stack
+- ✅ Java 17  
+- ✅ Spring Boot 3
+  - Spring Web
+  - Spring Data JPA
+  - Hibernate  
+- ✅ MySQL  
+- ✅ Maven  
+- ✅ Railway (despliegue de backend y base de datos)  
+- ✅ Vercel (Frontend conectado)  
 
-Frontend: React 19, React Router, React Bootstrap, Bootstrap 5, SweetAlert2, React Icons
-Tools: Vite, ESLint, JSON Server, Git
+---
 
-Contributors
+## 📦 Funcionalidades principales
 
+- CRUD de productos
+- Gestión de usuarios (administradores y clientes invitados)
+- Registro automático de invitados tras realizar pedidos
+- Carrito de compras con creación de pedidos
+- Relación entre usuarios, pedidos e ítems del pedido
+- Actualización de estado del pedido (`PENDIENTE`, `ENVIADO`, etc.)
+- Exposición de endpoints RESTful
+
+---
+
+## 📁 Estructura del proyecto
+
+src/
+├── controller/
+│ └── ProductoController.java
+│ └── PedidoController.java
+│ └── UsuarioController.java
+├── service/
+│ └── ProductoService.java
+│ └── PedidoService.java
+│ └── UsuarioService.java
+├── repository/
+│ └── ProductoRepository.java
+│ └── PedidoRepository.java
+│ └── UsuarioRepository.java
+├── model/
+│ └── Productos.java
+│ └── Usuarios.java
+│ └── Pedidos.java
+│ └── ItemPedido.java
+└── config/
+└── WebConfig.java (CORS)
+
+yaml
+Copy
+Edit
+
+---
+
+## ⚙️ Configuración
+
+### 🔐 Variables de entorno
+
+Estas son las variables que debes configurar, ya sea en `application.properties` o directamente en Railway:
+
+```properties
+# Configuración de MySQL desde Railway
+spring.datasource.url=jdbc:mysql://<RAILWAY_HOST>:<PORT>/<DATABASE>
+spring.datasource.username=<USERNAME>
+spring.datasource.password=<PASSWORD>
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA / Hibernate
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+🟡 Nota: Reemplaza los valores <RAILWAY_HOST>, <PORT>, <USERNAME>, etc. con las variables de Railway.
+
+🔓 CORS para conectar con frontend (Vercel)
+En WebConfig.java:
+
+java
+Copy
+Edit
+@Override
+public void addCorsMappings(CorsRegistry registry) {
+    registry.addMapping("/**")
+        .allowedOrigins("https://tu-frontend.vercel.app")
+        .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE");
+}
+📫 API Endpoints
+Método	Endpoint	Descripción
+GET	/productos	Lista todos los productos
+POST	/productos	Crea un nuevo producto
+PATCH	/usuarios/{id}/agregar-pedido	Agrega pedido al usuario
+POST	/pedidos	Crea un pedido
+PATCH	/pedidos/{id}/estado	Actualiza estado del pedido
+GET	/usuarios/{id}	Trae un usuario por ID
+
+🛠️ Despliegue
+Este backend está desplegado en Railway y se conecta con un frontend desplegado en Vercel.
+
+Pasos básicos:
+
+Crea el proyecto en Railway.
+
+Agrega tu base de datos MySQL.
+
+Configura las variables de entorno en Railway.
+
+Realiza el deploy conectando tu repositorio de GitHub.
+
+👨‍💻 Autor
+Desarrollado por @Rey-R06 como parte del sistema de gestión de pedidos para JolyDips.
+
+Equipo:
 Luis Camilo Rossi Ibarra (luiscamilorossiibarra@gmail.com)
 Simon Valencia Lopez (svalencia@cesde.net)
 Sergio Andres Zapata Alvarez (seanzapataal@cesde.net)
-
-This project showcases our skills in modern front-end development and teamwork. Let’s whip up something tasty together!
-
-Joly Guacamoly
-Acerca del Proyecto
-Joly Guacamoly es una app de página única en React 19 creada por Luis Camilo Rossi Ibarra, Simon Valencia Lopez y Sergio Andres Zapata Alvarez. Con un toque foodie (¡piensa en guacamole!), ofrece una experiencia de usuario dinámica y responsiva.
-Características
-
-Navegación Fluida: Usa React Router para transiciones sin esfuerzo.
-Interfaz Atractiva: Diseñada con React Bootstrap y Bootstrap 5 para un look adaptable.
-Datos Dinámicos: JSON Server simula un backend para renderizado en tiempo real.
-Alertas Geniales: SweetAlert2 mejora la interacción con notificaciones atractivas.
-Desarrollo Rápido: Vite para compilaciones rápidas y ESLint para código limpio.
-
-Tecnologías
-
-Frontend: React 19, React Router, React Bootstrap, Bootstrap 5, SweetAlert2, React Icons
-Herramientas: Vite, ESLint, JSON Server, Git
-
-Colaboradores
-
-Luis Camilo Rossi Ibarra (luiscamilorossiibarra@gmail.com)
-Simon Valencia Lopez (svalencia@cesde.net)
-Sergio Andres Zapata Alvarez (seanzapataal@cesde.net)
-
-Este proyecto refleja nuestras habilidades en desarrollo front-end moderno y trabajo en equipo. ¡Creemos algo delicioso juntos!
-
-Luis camilo rossi ibarra 
-Luiscamilorossiibarra@gmail.com
-cc. 1063146293
-
-Simon valencia lopez
-svalencia@cesde.net
-cc.1025646805
-
-Sergio Andres Zapata Alvarez 
-Seanzapataal@cesde.net
-cc. 1013458906
