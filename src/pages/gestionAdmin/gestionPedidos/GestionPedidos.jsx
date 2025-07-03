@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import ModalEditarEstado from "./editarEstado.jsx/ModalEditarEstado";
+import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import { alertaConfirmacion, alertaError } from "../../../helpers/funciones";
 import "./GestionPedidos.css";
 
-let apiPedidos = "https://product-manager-api-production-79d2.up.railway.app/pedidos";
+let apiPedidos =
+  "https://product-manager-api-production-79d2.up.railway.app/pedidos";
 
 export default function GestionPedidos() {
   const [modalAbierto, setModalAbierto] = useState(false);
@@ -35,16 +37,13 @@ export default function GestionPedidos() {
     }
 
     try {
-      const res = await fetch(
-        `${apiPedidos}/${pedido.id}/estado`,
-        {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ estado: estadoFinal }),
-        }
-      );
+      const res = await fetch(`${apiPedidos}/${pedido.id}/estado`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ estado: estadoFinal }),
+      });
 
       if (!res.ok) {
         const errorText = await res.text(); // 🔍 evitar JSON parse en errores HTML/texto
@@ -92,7 +91,6 @@ export default function GestionPedidos() {
           onChange={(e) => setBusqueda(e.target.value)}
         />
       </div>
-
       <section className="contenedor-pedidos">
         {pedidosFiltrados.map((pedido) => (
           <article className="card-pedido-admin" key={pedido.id}>
@@ -105,12 +103,39 @@ export default function GestionPedidos() {
             <p>Teléfono: {pedido.telefonoDelPedido}</p>
             <p className="estado-pedido">Estado: {pedido.estado}</p>
 
-            <button
-              className="btn-editar-estado"
-              onClick={() => abrirModal(pedido)}
-            >
-              Editar Estado
-            </button>
+            {/* Mostrar contactos si no hay usuario */}
+            {!pedido.usuario && (
+              <div className="contacto-externo">
+                <p>Este cliente no esta registrado.</p>
+              </div>
+            )}
+            <div className="contactar-cliente">
+              <p>Contactar cliente:</p>
+              <div className="iconos-contacto">
+                <a
+                  href={`https://wa.me/${pedido.telefonoDelPedido}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Contactar por WhatsApp"
+                >
+                  <FaWhatsapp size={40} color="#25D366" />
+                </a>
+                <a
+                  href={`mailto:${pedido.emailDelPedido}?subject=Pedido%20${pedido.id}`}
+                  title="Enviar correo"
+                >
+                  <FaEnvelope size={40} color="#EA4335" />
+                </a>
+              </div>
+            </div>
+            {pedido.usuario && (
+              <button
+                className="btn-editar-estado"
+                onClick={() => abrirModal(pedido)}
+              >
+                Editar Estado
+              </button>
+            )}
           </article>
         ))}
       </section>

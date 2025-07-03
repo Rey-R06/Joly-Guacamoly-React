@@ -88,3 +88,51 @@
 .btn-editar-estado:hover {
   background-color: var(--hover-color);
 }
+
+.contacto-externo {
+  position: absolute;
+  background: var(--verde-color);
+  margin-top: -45px;
+  padding: 5px;
+  border: var(--cafe-color) 2px solid;
+  border-radius: 50px;
+}
+
+.contacto-externo p{
+  width: 300px;
+  min-width: auto;
+  font-size: 1.3rem;
+  color: var(--cafe-color);
+  margin: 0;
+}
+
+.iconos-contacto {
+  display: flex;
+  gap: 20px;
+  margin-top: 5px;
+}
+
+.iconos-contacto a {
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.contactar-cliente{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactar-cliente p{
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+
+@media (max-width: 400px) {
+
+.contacto-externo p{
+  width: 200px;
+  font-size: 1rem;
+}
+}
