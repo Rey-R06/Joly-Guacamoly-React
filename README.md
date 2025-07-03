@@ -18,6 +18,30 @@ Este es el backend del sistema de gestión de pedidos para **JolyDips**, desarro
 
 ---
 
+## 📁 Estructura del proyecto
+
+src/
+-├── controller/
+-│ ├── ProductoController.java
+-│ ├── PedidoController.java
+-│ └── UsuarioController.java
+-├── service/
+-│ ├── ProductoService.java
+-│ ├── PedidoService.java
+-│ └── UsuarioService.java
+-├── repository/
+-│ ├── ProductoRepository.java
+-│ ├── PedidoRepository.java
+-│ └── UsuarioRepository.java
+-├── model/
+-│ ├── Productos.java
+-│ ├── Usuarios.java
+-│ ├── Pedidos.java
+-│ └── ItemPedido.java
+-└── config/
+-└── WebConfig.java (CORS)
+
+---
 ## 📦 Funcionalidades principales
 
 - CRUD de productos
@@ -32,12 +56,12 @@ Este es el backend del sistema de gestión de pedidos para **JolyDips**, desarro
 
 📫 API Endpoints
 Método	Endpoint	Descripción
-GET	/productos	Lista todos los productos
-POST	/productos	Crea un nuevo producto
-PATCH	/usuarios/{id}/agregar-pedido	Agrega pedido al usuario
-POST	/pedidos	Crea un pedido
-PATCH	/pedidos/{id}/estado	Actualiza estado del pedido
-GET	/usuarios/{id}	Trae un usuario por ID
+-GET	/productos	Lista todos los productos
+-POST	/productos	Crea un nuevo producto
+-PATCH	/usuarios/{id}/agregar-pedido	Agrega pedido al usuario
+-POST	/pedidos	Crea un pedido
+-PATCH	/pedidos/{id}/estado	Actualiza estado del pedido
+-GET	/usuarios/{id}	Trae un usuario por ID
 
 🛠️ Despliegue
 Este backend está desplegado en Railway y se conecta con un frontend desplegado en Vercel.
