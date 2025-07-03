@@ -29,7 +29,7 @@ Este es el backend del sistema de gestión de pedidos para **JolyDips**, desarro
 
 ---
 
-📫 API Endpoints
+##📫 API Endpoints
 Método	Endpoint	Descripción
 - GET	/productos	Lista todos los productos
 - POST	/productos	Crea un nuevo producto
@@ -38,7 +38,7 @@ Método	Endpoint	Descripción
 - PATCH	/pedidos/{id}/estado	Actualiza estado del pedido
 - GET	/usuarios/{id}	Trae un usuario por ID
 
-🛠️ Despliegue
+##🛠️ Despliegue
 Este backend está desplegado en Railway y se conecta con un frontend desplegado en Vercel.
 
 Pasos básicos:
