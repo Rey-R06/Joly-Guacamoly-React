@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-let apiUsuarios = "https://product-manager-api-production-79d2.up.railway.app/usuarios";
+let apiUsuarios = "https://product-manager-api-s77y.onrender.com/usuarios";
 import "../adminsYClientes.css";
 
 export default function GestionAdmins() {

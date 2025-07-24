@@ -4,7 +4,7 @@ import CardProductos from "../../components/card_Producto/CardProductos";
 import Header from "../../components/header/Header";
 import Footer from "../../components/footer/Footer";
 import "./productos.css";
-let apiProductos = "https://product-manager-api-production-79d2.up.railway.app/productos";
+let apiProductos = "https://product-manager-api-s77y.onrender.com/productos";
 
 function Productos() {
   const [productos, setProductos] = useState([]);

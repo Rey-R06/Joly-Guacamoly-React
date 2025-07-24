@@ -10,9 +10,9 @@ import FormularioPedido from "./formularioPedido/FormularioPedido";
 import RegistroInvitado from "./formularioPedido/registroInvitado/RegistroInvitado";
 import "./carrito.css";
 
-const apiPedidos = "https://product-manager-api-production-79d2.up.railway.app/pedidos";
-const apiUsuarios = "https://product-manager-api-production-79d2.up.railway.app/usuarios";
-const apiProductos = "https://product-manager-api-production-79d2.up.railway.app/productos";
+const apiPedidos = "https://product-manager-api-s77y.onrender.com/pedidos";
+const apiUsuarios = "https://product-manager-api-s77y.onrender.com/usuarios";
+const apiProductos = "https://product-manager-api-s77y.onrender.com/productos";
 
 export default function Carrito() {
   const navigate = useNavigate();
@@ -82,115 +82,123 @@ export default function Carrito() {
     setIdProductos(nuevoCarrito);
   };
 
-  const crearPedido = async (datos) => {
-    if (productosEnCarrito.length === 0) {
-      alertaError("El carrito está vacío");
-      return;
-    }
+ const crearPedido = async (datos) => {
+  if (productosEnCarrito.length === 0) {
+    alertaError("El carrito está vacío");
+    return;
+  }
 
-    if (!datos.direccion || !datos.metodoPago) {
-      alertaError("Completa la dirección y método de pago");
-      return;
-    }
+  if (!datos.direccion || !datos.metodoPago) {
+    alertaError("Completa la dirección y método de pago");
+    return;
+  }
 
-    const pedido = {
-      direccionEntrega: datos.direccion,
-      metodoDePago: datos.metodoPago,
-      estado: "PENDIENTE",
-      itemsPedido: productosEnCarrito.map((item) => ({
-        producto: { id: item.id },
-        cantidad: item.cantidad,
-      })),
-      ...(usuarioSesion?.id
-        ? { usuario: { id: usuarioSesion.id } }
-        : {
-            nombreDelPedido: datos.nombre,
-            emailDelPedido: datos.email,
-            telefonoDelPedido: datos.telefono,
-          }),
-      nombreDelPedido: datos.nombre,
-      emailDelPedido: datos.email,
-      telefonoDelPedido: datos.telefono,
-    };
+  const pedido = {
+    direccionEntrega: datos.direccion,
+    metodoDePago: datos.metodoPago,
+    estado: "PENDIENTE",
+    itemsPedido: productosEnCarrito.map((item) => ({
+      producto: { id: item.id },
+      cantidad: item.cantidad,
+    })),
+    ...(usuarioSesion?.id
+      ? { 
+          nombreDelPedido: usuarioSesion.nombre,
+          emailDelPedido: usuarioSesion.email,
+          telefonoDelPedido: usuarioSesion.telefono,}
+      : {
+          nombreDelPedido: datos.nombre,
+          emailDelPedido: datos.email,
+          telefonoDelPedido: datos.telefono,
+          registrado: false,
+        }),
+  };
+  console.log("pedido:",pedido)
+  
+  console.log("datos:",datos)
 
-    try {
-      setIsSendingPedido(true);
-      const res = await fetch(apiPedidos, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(pedido),
+  try {
+    setIsSendingPedido(true);
+    const res = await fetch(apiPedidos, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(pedido),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) throw new Error(data.mensaje || "Error al crear pedido");
+
+    const pedidoCreado = data;
+
+    if (usuarioSesion?.id) {
+      await fetch(`${apiUsuarios}/${usuarioSesion.id}/agregar-pedido`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ pedidoId: pedidoCreado.id }),
       });
 
-      const data = await res.json();
+      usuarioSesion.historialPedidos = [
+        ...(usuarioSesion.historialPedidos || []),
+        pedidoCreado.id,
+      ];
+      localStorage.setItem("usuario", JSON.stringify(usuarioSesion));
 
-      if (!res.ok) throw new Error(data.mensaje || "Error al crear pedido");
-
-      const pedidoCreado = data; // ✅ pedido ya creado con ID
-
-      if (usuarioSesion?.id) {
-        // ✅ Ahora sí, actualizar historial después de tener el ID del pedido
-        await fetch(
-          `${apiUsuarios}/${usuarioSesion.id}/agregar-pedido`,
-          {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ pedidoId: pedidoCreado.id }),
-          }
-        );
-
-        // ✅ Actualizar también localStorage
-        usuarioSesion.historialPedidos = [
-          ...(usuarioSesion.historialPedidos || []),
-          pedidoCreado.id,
-        ];
-        localStorage.setItem("usuario", JSON.stringify(usuarioSesion));
-
-        alertaConfirmacion(
-          "Gracias por tu compra",
-          "Pedido realizado con éxito"
-        ).then(() => navigate("/productos"));
-      } else {
-        // 🛠️ Lógica para invitado
-        setDatosInvitado({
-          direccionEntrega: datos.direccion,
-          nombre: datos.nombre,
-          email: datos.email,
-          telefono: datos.telefono,
-        });
-        setUltimoPedidoId(pedidoCreado.id);
-        setModalRegistroOpen(true);
-      }
-
-      localStorage.removeItem("carrito"); // 🛒 limpiar carrito
-    } catch (error) {
-      console.error("Error:", error);
-      alertaError("Error al procesar el pedido");
-    } finally {
-      setIsSendingPedido(false);
+      alertaConfirmacion(
+        "Gracias por tu compra",
+        "Pedido realizado con éxito"
+      ).then(() => navigate("/productos"));
+    } else {
+      setDatosInvitado({
+        direccionEntrega: datos.direccion,
+        nombre: datos.nombre,
+        email: datos.email,
+        telefono: datos.telefono,
+      });
+      setUltimoPedidoId(pedidoCreado.id);
+      setModalRegistroOpen(true);
     }
-  };
+
+    localStorage.removeItem("carrito");
+  } catch (error) {
+    console.error("Error:", error);
+    alertaError("Error al procesar el pedido");
+  } finally {
+    setIsSendingPedido(false);
+  }
+};
+
 
   const registrarInvitado = async (nuevoUsuario) => {
-    try {
-      setIsRegisteringInvitado(true);
-      console.log("usuario", nuevoUsuario);
-      const resUsuario = await fetch(apiUsuarios, {
-        method: "POST",
+  try {
+    setIsRegisteringInvitado(true);
+
+    const resUsuario = await fetch(apiUsuarios, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...nuevoUsuario,
+        rol: "Cliente",
+        historialPedidos: ultimoPedidoId ? [ultimoPedidoId] : [],
+        registrado: true,
+      }),
+    });
+
+    if (!resUsuario.ok) throw new Error("Error al registrar usuario");
+
+    const usuarioRegistrado = await resUsuario.json();
+
+    // PATCH 1: Marcar pedido como registrado
+    if (ultimoPedidoId) {
+      await fetch(`${apiPedidos}/${ultimoPedidoId}`, {
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...nuevoUsuario,
-          rol: "Cliente",
-          historialPedidos: ultimoPedidoId ? [ultimoPedidoId] : [],
-          registrado: true,
-        }),
+        body: JSON.stringify({ registrado: true }),
       });
 
-      if (!resUsuario.ok) throw new Error("Error al registrar usuario");
-
-      const usuarioRegistrado = await resUsuario.json();
-
+      // PATCH 2: Asociar el pedido al nuevo usuario
       await fetch(`${apiPedidos}/${ultimoPedidoId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -198,21 +206,23 @@ export default function Carrito() {
           usuario: { id: usuarioRegistrado.id },
         }),
       });
-
-      localStorage.setItem("token", generarToken());
-      localStorage.setItem("usuario", JSON.stringify(usuarioRegistrado));
-
-      alertaConfirmacion(
-        "¡Registro exitoso!",
-        "Ahora puedes consultar tus pedidos"
-      ).then(() => navigate("/productos"));
-    } catch (error) {
-      console.error("Error:", error);
-      alertaError("Hubo un problema al registrar");
-    } finally {
-      setIsRegisteringInvitado(false);
     }
-  };
+
+    localStorage.setItem("token", generarToken());
+    localStorage.setItem("usuario", JSON.stringify(usuarioRegistrado));
+
+    alertaConfirmacion(
+      "¡Registro exitoso!",
+      "Ahora puedes consultar tus pedidos"
+    ).then(() => navigate("/productos"));
+  } catch (error) {
+    console.error("Error:", error);
+    alertaError("Hubo un problema al registrar");
+  } finally {
+    setIsRegisteringInvitado(false);
+  }
+};
+
 
   return (
     <section className="carrito-contenedor">

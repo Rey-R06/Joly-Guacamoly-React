@@ -4,7 +4,7 @@ import ModalEditarProducto from "./editarProducto/ModalEditarProducto";
 import ModalAgregarProducto from "./agregarProducto/ModalAgregarProducto";
 import "./GestionProductos.css";
 
-const apiProductos = "https://product-manager-api-production-79d2.up.railway.app/productos";
+const apiProductos = "https://product-manager-api-s77y.onrender.com/productos";
 
 export default function GestionProductos() {
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);

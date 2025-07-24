@@ -29,6 +29,7 @@ export default function RegistroInvitado({
               email: datos.email,
               telefono: datos.telefono,
               direccionEntrega: datos.direccionEntrega,
+              registrado: true,
               contraseña,
             });
           }}

@@ -4,8 +4,7 @@ import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 import { alertaConfirmacion, alertaError } from "../../../helpers/funciones";
 import "./GestionPedidos.css";
 
-let apiPedidos =
-  "https://product-manager-api-production-79d2.up.railway.app/pedidos";
+let apiPedidos = "https://product-manager-api-s77y.onrender.com/pedidos";
 
 export default function GestionPedidos() {
   const [modalAbierto, setModalAbierto] = useState(false);
@@ -69,8 +68,8 @@ export default function GestionPedidos() {
     }
   };
 
+  console.log(pedidos);
   const abrirModal = (pedido) => {
-    console.log(pedido);
     setPedidoSeleccionado(pedido);
     setModalAbierto(true);
   };
@@ -104,7 +103,7 @@ export default function GestionPedidos() {
             <p className="estado-pedido">Estado: {pedido.estado}</p>
 
             {/* Mostrar contactos si no hay usuario */}
-            {!pedido.usuario && (
+            {!pedido.registrado && (
               <div className="contacto-externo">
                 <p>Este cliente no esta registrado.</p>
               </div>
@@ -128,7 +127,7 @@ export default function GestionPedidos() {
                 </a>
               </div>
             </div>
-            {pedido.usuario && (
+            {pedido.registrado && (
               <button
                 className="btn-editar-estado"
                 onClick={() => abrirModal(pedido)}

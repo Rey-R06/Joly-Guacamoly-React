@@ -56,6 +56,7 @@ export default function FormularioPedido({
       nombre,
       email,
     };
+    console.log(datosPedido)
 
     // Guardar en localStorage:
     localStorage.setItem("ultimaDireccion", direccion);

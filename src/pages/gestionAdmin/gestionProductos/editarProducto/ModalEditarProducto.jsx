@@ -49,7 +49,7 @@ export default function ModalEditarProducto({
         creadoPorUsuario: producto.creadoPorUsuario,
       };
 
-      const res = await fetch(`https://product-manager-api-production-79d2.up.railway.app/productos/${producto.id}`, {
+      const res = await fetch(`http://localhost:8080/productos/${producto.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(actualizado),
